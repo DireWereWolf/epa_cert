@@ -1,1 +1,1 @@
-console.log('\'Allo \'Allo!');
+/* Main page js */

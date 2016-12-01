@@ -32,10 +32,68 @@ html.no-js(lang='ru')
     +page(page)
       include layouts/partials/header
       include layouts/partials/hero/hero_main
-      aside.sidebar.sidebar_right
-        .sidebar__block
+
+
       main.content
-        | Here content
+        .content__wrapper.c-wrap
+
+          section.benefits
+            h2.benefits__title Наши преимущества
+            .benefits__items
+              figure.benefits__item.benefit
+                +img("benefits/grapes-and-pear-on-a-platter.png",
+                    {title: "some", className:"benefit__img", width:"80", height:"80"})
+                figcaption
+                  span.benefit__title Высококачественные продукты
+                  span.benefit__desc Собственное фермерское хозяйство и никаких поставщиков
+              //-item end
+              figure.benefits__item
+                +img("benefits/chef-with-hat.png",
+                {title: "some", className: "benefit__img", width: "80", height: "80"})
+                figcaption
+                  span.benefit__title Профессионализм
+                  span.benefit__desc Отзывчивый и высококвалифицированный персонал
+              //-item end
+              figure.benefits__item
+                +img("benefits/food-on-a-stick.png",
+                {title: "some", className: "benefit__img", width: "80", height: "80"})
+                figcaption
+                  span.benefit__title Кейтеринг
+                  span.benefit__desc Профессиональная организация выездных мероприятий
+              //-item end
+              figure.benefits__item
+                +img("benefits/glass-of-wine-and-bottle.png",
+                {title: "some", className: "benefit__img", width: "80", height: "80"})
+                figcaption
+                  span.benefit__title Винная карта
+                  span.benefit__desc Только лучшие напитки
+          //- benefits end
+          section.menu-categories.menu-categories-main
+            h3.menu-categories__title
+            .menu-categories__items
+              .menu-categories__item Горячие блюда
+              .menu-categories__item Холодные закуски
+              .menu-categories__item Десерты
+              .menu-categories__item Напитки
+          //- menu-categories
+
+          section.events.events_last-events-main
+            h3.events__title
+            .events__items
+              .events__item.event
+                +img("",
+                {title: "event", className: "event__img", width: "80", height: "80"})
+                .event__title Event title
+                .event__desc
+                  .event__date 11.11.11
+                  .event__prev-text
+                    | Lorem ipsum dolor sit amet
+              .events__item
+              .events__item
+              .events__item
+          //- events end
+
+
 
       include layouts/partials/footer
 
@@ -53,6 +111,10 @@ html.no-js(lang='ru')
     script(src='/bower_components/jquery/dist/jquery.js')
     script(src='/bower_components/modernizr/modernizr.js')
     // endbower
+    // endbuild
+
+    // build:js scripts/common.js
+    script(src='scripts/common.js')
     // endbuild
 
     // build:js scripts/main.js

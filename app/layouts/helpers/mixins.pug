@@ -4,3 +4,27 @@ mixin page(modifier)
       block
     else
       p No content provided
+
+
+
+//-***************************
+ helper for image add, url started from "images/" folder, here example:
+
+  +img(
+      "image_in_root_img_folder.png",
+      {
+        title: "some title",
+        className: "class image__class",
+        width: "80",
+        height: "80"
+      })
+//-*****************
+
+mixin img(src, attrs)
+  img(
+      src='images/'+src
+      alt=attrs.title
+      title=attrs.title
+      class=attrs.className
+      width=attrs.width
+      height=attrs.height)
