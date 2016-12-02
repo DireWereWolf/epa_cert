@@ -1,20 +1,32 @@
 .header
   .header__wrapper.c-wrap
-    .header__logo-wrapper
-      +img("logo.svg",
-          {title: "Main logo", className:"header__logo", width:"160", height:"160"})
+    if page === "main"
+      .header__logo-wrapper
+        +img("logo.svg",
+            {title: "Лого", className:"header__logo", width:"80", height:"80"})
+    else
+      a.header__logo-wrapper(href="/")
+        +img("logo.svg",
+        {title: "Лого", className: "header__logo", width: "80", height: "80"})
 
     .header__contacts
-      a.header__contact(href="callto:+00000000000" aria-label="Телефон") +0 (000) 000 00 00
-    .header__order Заказать столик
-    nav.header__nav.main-nav
+      a.header__contact(href="callto:+00000000000" title="Номер телефона" aria-label="Номер телефона") +0(000) 000 00 00
+    .header__order
+      button.header__order-btn Заказать столик
+  nav.header__nav.main-nav
+    .c-wrap.main-nav__wrapper
       button.main-nav__button Меню
       ul.main-nav__items.main-nav__items_lvl-1
         li.main-nav__item(role="menuitem")
           a.main-nav__link(href="about.html") О нас
         li.main-nav__item(role="menuitem")
-          a.main-nav__link(href="#") Наши блюда
+          a.main-nav__link(href="menu.html") Наши блюда
         li.main-nav__item(role="menuitem")
-          a.main-nav__link(href="#") События
+          a.main-nav__link(href="events.html") События
         li.main-nav__item(role="menuitem")
-          a.main-nav__link(href="#") Контакты
+          a.main-nav__link(href="contacts.html") Контакты
+  .header__wrapper.c-wrap
+    .header__search.search.search_header
+        label.search__label
+          span.fa.fa-search.search__icon
+          input.search__input

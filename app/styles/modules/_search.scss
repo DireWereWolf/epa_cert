@@ -1,0 +1,32 @@
+.search{
+  &_header{
+    .search{
+      &__label,
+      &__input{
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+      }
+      &__input{
+        height: rem(30px);
+        padding: rem(2px) rem(10px) 0 rem(25px);
+        @include line-height(26px);
+        background: transparent;
+        color: $secondary-color;
+        text-align: left;
+        border: rem(2px) solid $ternary-color;
+        border-radius: rem(20px);
+      }
+      &__icon{
+        position: absolute;
+        top: rem(7px);
+        left: rem(10px);
+      }
+    }
+    .fa{
+      &-search{
+        color: $secondary-color;
+      }
+    }
+  }
+}

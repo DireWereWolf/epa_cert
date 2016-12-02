@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+
+/*
+    Grid Settings, using bourbon.neat, doc - http://thoughtbot.github.io/neat-docs/latest/
+*/
+$column: 4.2358em !default;
+$gutter: 1.618em !default;
+$grid-columns: 12 !default;
+$max-width: 1200px !default;
+$border-box-sizing: true !default;
+$default-layout-direction: LTR !default;
+
+// Debug variables
+//$visual-grid: false !default;
+//$visual-grid-color: #eee !default;
+//$visual-grid-index: back !default;
+//$visual-grid-opacity: 0.4 !default;
+//$visual-grid-breakpoints: () !default;
+
+
+/*
+  Base-variables
+*/
+$base-px-default: 16px;
+$line-height-base: 1.4;
+
+
+/**
+  Colors
+ */
+$white: #fff;
+$black: #000;
+
+$main-color: #2a262c;
+$secondary-color: #ccc6a0;
+$ternary-color: #8e8a7e;
+
+$text-main: $black;
+$text-reverse: $white;
+
+$header-bg: $main-color;
+$footer-bg: $main-color;
+
+
+$facebook: #1f5ca0;
+$vkontakte: #507299;
+$google-plus:#f05046;
+
+/**
+  Fonts
+ */
+$ff-menu  : "Comfortaa";
+$ff-titles: "Comfortaa";
+$ff-text  : "Ubuntu";
+

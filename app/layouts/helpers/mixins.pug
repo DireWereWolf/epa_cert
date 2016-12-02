@@ -28,3 +28,15 @@ mixin img(src, attrs)
       class=attrs.className
       width=attrs.width
       height=attrs.height)
+
+
+mixin hero-content(title, image, pag_items)
+  .hero.hero_inner(style="background: url("+image+")")
+    .hero_wrapper.c-wrap
+      h1.hero__title=title
+      .hero__pagination.pagination.pagination_hero
+        each val, index in pag_items
+          if index === pag_items.length-1
+            span.pagination__item.pagination__item_active= val.text
+          else
+            a.pagination__item(href=val.url)= val.text

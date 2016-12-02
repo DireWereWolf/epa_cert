@@ -8,8 +8,16 @@
       .footer__email-title Email
       a.footer__email(href="mailto:restraunt@gmail.com" aria-label="Email") restraunt@gmail.com
     .footer__social.social.social_footer
-      .social__item.social__item_fb
-      .social__item.social__item_vk
-      .social__item.social__item_gp
+      a.social__item(href="#" title="Facebook")
+        .fa.fa-facebook(aria-label="Facebook")
+      a.social__item(href="#" title="Vkontakte")
+        .fa.fa-vk(aria-label="Vkontakte")
+      a.social__item(href="#" title="Google plus")
+        .fa.fa-google-plus(aria-label="Google plus")
+    .footer__developed
+      span.footer__developed-title Разработано
+      a(href="https://github.com/DireWereWolf" rel="nofollow" target="_blank")
+        +img("ww.svg",
+        {title: "dww", className: "footer__developed-img", width: "40", height: "40"})
 
 .get-table(role="aria-modal" aria-label="Заказ столика")

@@ -1,3 +1,53 @@
 /*
 * Base styles, only tag selector use
 */
+
+/*Normalize*/
+@import "bower_components/normalize-scss/_normalize.scss";
+
+
+html{
+  width: 100%;
+  height: 100%;
+  font-family:'Ubuntu', 'Comfortaa', Arial, Helvetica, sans-serif;
+  font-size:$base-px-default;
+  line-height: $line-height-base;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body{
+  overflow: hidden;
+}
+
+img,video,iframe{
+  max-width: 100%;
+}
+
+img{
+  display: inline-block;
+  vertical-align: top;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+button{
+  border: 0;
+  padding: 0;
+  background: transparent;
+  outline: 0;
+  cursor: pointer;
+}
+
+input{
+  border: 0;
+  padding: 0;
+  background: $white;
+  outline: 0;
+}
+
+figure{
+  margin:0;
+}

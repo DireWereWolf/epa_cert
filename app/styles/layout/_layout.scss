@@ -2,6 +2,27 @@
 * Common layout styles
 */
 
-.c-wrap{//content wrapper container
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
 
+.c-wrap{//content wrapper container
+  @include outer-container;
+}
+
+.f-title{
+  font-family:$ff-titles;
+}
+
+.fa{//base font-size of fotawesome icons
+  @include font-size($base-px-default);
+}
+
+.content{
+  position: relative;
+  padding: rem(40px) 0;
+  color: $main-color;
 }

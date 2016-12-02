@@ -1,0 +1,43 @@
+.benefits{
+  margin-bottom: rem(40px);
+
+  &__title{
+    margin: 0 0 rem(20px);
+    @include font-size(30px);
+    text-align: center;
+  }
+  &__items{
+    @include clearfix;
+  }
+  &__item{
+    @include span-columns(3);
+    text-align: center;
+
+    &:hover{
+      .benefit__img{
+        @include transform(scale(1.2));
+        @include transition(transform .4s);
+      }
+    }
+  }
+}
+
+.benefit{
+  padding: rem(10px);
+
+  &__img{
+    max-width: rem(80px);
+    margin-bottom: rem(10px);
+    @include transition(transform .4s);
+  }
+
+  &__title,
+  &__desc{
+    display: block;
+    word-wrap: break-word;
+  }
+
+  &__title{
+    @include font-size(20px);
+  }
+}

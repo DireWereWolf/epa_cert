@@ -1,5 +1,5 @@
 include layouts/helpers/mixins
-- var page = 'about';
+- var page = 'menu';
 
 doctype html
 html.no-js(lang='ru')
@@ -32,11 +32,11 @@ html.no-js(lang='ru')
     +page(page)
       include layouts/partials/header
 
-      +hero-content("О нас", "http://placehold.it/350x150", [
+      +hero-content("Наше меню", "http://placehold.it/350x150", [
         { url: "index.html",
           text: "Главная"},
         { url: "#",
-          text: "О нас"}
+          text: "Наше меню"}
       ])
 
 

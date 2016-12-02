@@ -1,0 +1,94 @@
+.header{
+  background: $header-bg;
+  background-image: url("../images/header_bg.png");
+  text-align: center;
+
+  &__wrapper{
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__contacts{
+    @include span-columns(4);
+    padding: rem(35px) 0;
+    min-height: inherit;
+  }
+  &__contact{
+    color: $ternary-color;
+    white-space: nowrap;
+  }
+  &__logo-wrapper{
+    position: absolute;
+    width: rem(160px);
+    top: rem(10px);
+    left: 50%;
+    margin-left: rem(-80px);
+  }
+  &__order{
+    @include direction-context(right-to-left){
+      @include span-columns(4);
+      padding: rem(35px) 0;
+      @include clearfix;
+      margin-bottom: rem(10px);
+    }
+
+    &-btn{
+      color: $ternary-color;
+    }
+  }
+  &__nav{
+    clear: both;
+    margin-left: -100%;
+    margin-right: -100%;
+    background: $secondary-color;
+  }
+  &__search{
+    padding: rem(20px) 0;
+    text-align: center;
+  }
+}
+
+.main-nav{
+  text-align: center;
+
+  &__wrapper{
+    @include outer-container;
+  }
+
+  &__button{
+    display: none;
+  }
+  &__items{
+    padding: 0;
+    margin: 0;
+    font-size:0;
+  }
+  &__item{
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 rem(15px) 0 0;
+    margin-right: rem(15px);
+    font-family: $ff-menu, sans-serif;
+    @include font-size(18px);
+    @include line-height(50px);
+    @include letterpress(0.75);
+    color: $main-color;
+    border-right: rem(2px) solid $main-color;
+    border-radius: rem(25px);
+    list-style: none;
+
+  }
+  &__link{
+    color: inherit;
+    @include transition(color .4s, text-shadow .4s, border-color .3s);
+
+    &:hover{
+      color: $white;
+      @include letterpress(0.75, $main-color);
+    }
+    &:active{
+      color:$ternary-color;
+      border-color: transparent;
+    }
+  }
+}

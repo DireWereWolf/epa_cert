@@ -16,6 +16,7 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
+    |<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Ubuntu:400,500,500i&amp;subset=cyrillic" rel="stylesheet">
     // build:css styles/main.css
     link(rel='stylesheet', href='styles/'+page+'.css')
     // endbuild
@@ -38,47 +39,56 @@ html.no-js(lang='ru')
         .content__wrapper.c-wrap
 
           section.benefits
-            h2.benefits__title Наши преимущества
+            h2.benefits__title.f-title Наши преимущества
             .benefits__items
               figure.benefits__item.benefit
                 +img("benefits/grapes-and-pear-on-a-platter.png",
-                    {title: "some", className:"benefit__img", width:"80", height:"80"})
+                    {title: "Продукты", className:"benefit__img", width:"80", height:"80"})
                 figcaption
-                  span.benefit__title Высококачественные продукты
-                  span.benefit__desc Собственное фермерское хозяйство и никаких поставщиков
+                  span.benefit__title Продукты
+                  span.benefit__desc Собственное фермерское хозяйство
               //-item end
-              figure.benefits__item
+              figure.benefits__item.benefit
                 +img("benefits/chef-with-hat.png",
-                {title: "some", className: "benefit__img", width: "80", height: "80"})
+                {title: "Профессионализм", className: "benefit__img", width: "80", height: "80"})
                 figcaption
                   span.benefit__title Профессионализм
                   span.benefit__desc Отзывчивый и высококвалифицированный персонал
               //-item end
-              figure.benefits__item
+              figure.benefits__item.benefit
                 +img("benefits/food-on-a-stick.png",
-                {title: "some", className: "benefit__img", width: "80", height: "80"})
+                {title: "Кейтеринг", className: "benefit__img", width: "80", height: "80"})
                 figcaption
                   span.benefit__title Кейтеринг
                   span.benefit__desc Профессиональная организация выездных мероприятий
               //-item end
-              figure.benefits__item
+              figure.benefits__item.benefit
                 +img("benefits/glass-of-wine-and-bottle.png",
-                {title: "some", className: "benefit__img", width: "80", height: "80"})
+                {title: "Винная карта", className: "benefit__img", width: "80", height: "80"})
                 figcaption
                   span.benefit__title Винная карта
                   span.benefit__desc Только лучшие напитки
           //- benefits end
-          section.menu-categories.menu-categories-main
-            h3.menu-categories__title
+
+          section.menu-categories.menu-categories_main
+            h3.menu-categories__title.f-title Наше меню
             .menu-categories__items
-              .menu-categories__item Горячие блюда
-              .menu-categories__item Холодные закуски
-              .menu-categories__item Десерты
-              .menu-categories__item Напитки
+              a.menu-categories__item.menu-category.menu-category_main(href="#")
+                .menu-category__title.f-title Горячие блюда
+                .menu-category__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
+              a.menu-categories__item.menu-category.menu-category_main(href="#")
+                .menu-category__title.f-title Холодные закуски
+                .menu-category__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
+              a.menu-categories__item.menu-category.menu-category_main(href="#")
+                .menu-category__title.f-title Десерты
+                .menu-category__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
+              a.menu-categories__item.menu-category.menu-category_main(href="#")
+                .menu-category__title.f-title Напитки
+                .menu-category__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
           //- menu-categories
 
           section.events.events_last-events-main
-            h3.events__title
+            h3.events__title Cобытия
             .events__items
               .events__item.event
                 +img("",
@@ -97,14 +107,7 @@ html.no-js(lang='ru')
 
       include layouts/partials/footer
 
-    //- Google Analytics: change UA-XXXXX-X to be your site's ID.
-    //-script.
-    //-  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    //-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    //-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    //-    e.src='https://www.google-analytics.com/analytics.js';
-    //-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    //-  ga('create','UA-XXXXX-X');ga('send','pageview');
+    include layouts/partials/analytics
 
     // build:js scripts/vendor.js
     // bower:js

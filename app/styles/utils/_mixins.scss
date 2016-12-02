@@ -1,0 +1,30 @@
+@mixin font-size($fsz){
+  font-size:$fsz;
+  font-size:rem($fsz);
+}
+@mixin line-height($lnhgt){
+  line-height:$lnhgt;
+  line-height:rem($lnhgt);
+}
+
+@mixin font-weight($type){
+  @if $type == "700" {
+    font-weight: 700;
+  } @else if $type == "700i" {
+    font-weight: 700;
+    font-style:italic;
+  } @else if $type == "400i" {
+    font-weight: 400;
+    font-style: italic;
+  } @else {
+    font-weight: 400;
+  }
+}
+
+// Letterpress effect
+// -------------
+@mixin letterpress($opacity: 0.5, $color: $white){
+  text-shadow: rgba($color,$opacity) 0 1px 0;
+}
+
+

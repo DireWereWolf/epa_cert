@@ -1,0 +1,60 @@
+.menu-categories{
+
+
+  &_main{
+    margin-bottom: rem(30px);
+    .menu-categories{
+      &__title{
+        margin: 0 0 rem(20px);
+        @include font-size(30px);
+        text-align: center;
+      }
+      &__items{
+        text-align: center;
+        font-size:0;
+      }
+      &__item{
+        display: inline-block;
+        vertical-align: middle;
+        width: 50%;
+        height: rem(300px);
+        padding: rem(20px) rem(20px) 0;
+        margin-bottom: rem(20px);
+        @include font-size(16px);
+        overflow: hidden;
+      }
+    }
+  }
+
+}
+
+.menu-category{
+
+  &_main{
+    position: relative;
+    .menu-category{
+      &__title,
+      &__img{
+        position: absolute;
+        display: block;
+        width: 100%;
+        max-width: rem(560px);
+      }
+
+      &__title{
+        background-color: rgba($main-color, .5);
+        height: inherit;
+        max-height: rem(280px);
+        color: $secondary-color;
+        @include line-height(280px);
+        @include font-size(35px);
+        white-space: nowrap;
+      }
+      &__img{
+        background: $main-color;
+        height: inherit;
+        z-index: -1;
+      }
+    }
+  }
+}

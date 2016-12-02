@@ -1,0 +1,86 @@
+.footer{
+  background: $footer-bg;
+  color: $ternary-color;
+
+  &__wrapper{
+    padding: rem(25px) 0;
+  }
+
+  &__contacts,
+  &__social,
+  &__developed{
+    @include span-columns(4);
+  }
+
+  &__developed{
+    padding: rem(45px) 0;
+    text-align: right;
+
+    &-title{
+      @include line-height(40px);
+      margin-right: rem(10px);
+    }
+    &-img{
+      width: rem(40px);
+    }
+  }
+
+  &__phone-title,
+  &__address-title,
+  &__email-title{
+    @include font-size(18px);
+  }
+
+  &__phone,
+  &__address,
+  &__email{
+    padding-left: rem(15px);
+    color: $white;
+  }
+}
+
+.social{
+  &_footer{
+    padding: rem(40px) 0;
+    text-align: center;
+    font-size:0;
+    .social{
+      &__item{
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 rem(5px);
+      }
+    }
+
+    .fa{
+      width: rem(40px);
+      height: rem(40px);
+      color: $white;
+      @include font-size(18px);
+      @include line-height(36px);
+      border: rem(2px) solid $white;
+      border-radius: 50%;
+      cursor: pointer;
+      @include transition(border-color .4s);
+
+      &:hover{
+        border-color: $secondary-color;
+        @include transition(border-color .4s);
+      }
+      &:active{
+        border-color: $ternary-color;
+        @include transition(border-color .4s);
+      }
+
+      &-facebook{
+        background: $facebook;
+      }
+      &-vk{
+        background: $vkontakte;
+      }
+      &-google-plus{
+        background: $google-plus;
+      }
+    }
+  }
+}
