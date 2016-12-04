@@ -31,8 +31,8 @@ mixin img(src, attrs)
 
 
 mixin hero-content(title, image, pag_items)
-  .hero.hero_inner(style="background: url("+image+")")
-    .hero_wrapper.c-wrap
+  .hero.hero_inner(style="background: url("+image+") 50% 50%")
+    .hero__wrapper.c-wrap
       h1.hero__title=title
       .hero__pagination.pagination.pagination_hero
         each val, index in pag_items

@@ -1,14 +1,16 @@
-// Vars, mixins
+// Vars, mixins, libs(in utils)
 @import "utils/utils";
 @import "base/base";
 @import "layout/layout";
 
 // Visual parts
-@import "layout/partials/header";
-
-@import "layout/partials/benefits";
-@import "layout/partials/menu-categories";
-@import "layout/partials/footer";
-
-// Modules
+@import "layout/partials/_header.scss";
+@import "layout/partials/_hero-main.scss";
+@import "layout/partials/_benefits.scss";
+@import "layout/partials/_menu-categories.scss";
+@import "layout/partials/_events.scss";
+@import "layout/partials/_footer.scss";
+//
+//// Modules
 @import "modules/search";
+@import "modules/slider";

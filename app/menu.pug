@@ -16,7 +16,7 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
-    // build:css styles/main.css
+    // build:css styles/menu.css
     link(rel='stylesheet', href='styles/'+page+'.css')
     // endbuild
 
@@ -32,19 +32,18 @@ html.no-js(lang='ru')
     +page(page)
       include layouts/partials/header
 
-      +hero-content("Наше меню", "http://placehold.it/350x150", [
+      +hero-content("Наше меню", "images/hero_menu.jpg", [
         { url: "index.html",
           text: "Главная"},
         { url: "#",
           text: "Наше меню"}
       ])
+      .page__content.c-wrap.content
+        aside.sidebar.sidebar_l
 
-
-      main.content
-
-
+        main.content__wrapper.content__wrapper_r
+          h2 Content
       include layouts/partials/footer
-
 
     include layouts/partials/analytics
 

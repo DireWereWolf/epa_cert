@@ -1,0 +1,72 @@
+.hero.hero_inner{
+  position: relative;
+  background-color: $main-color;
+  overflow: hidden;
+
+  &:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: rem(300px);
+    background-color: rgba($black, .7);
+  }
+
+  .hero{
+    &__wrapper{
+      padding: rem(40px) 0;
+    }
+    &__title,
+    &__pagination{
+      position: relative;
+      z-index: 1;
+    }
+    &__title{
+      margin: 0 0 rem(20px);
+      text-align: center;
+      font-family: $ff-titles;
+      @include font-size(60px);
+      @include font-weight($f-bold);
+      color: $white;
+      text-shadow: 1px 0 5px rgba(0, 0, 0, 0.8);
+    }
+    &__pagination{
+      text-align: center;
+      font-size:0;
+    }
+  }
+}
+
+.pagination.pagination_hero{
+  .pagination{
+    &__item{
+      display: inline-block;
+      vertical-align: top;
+      color: $white;
+      @include font-size(20px);
+
+      &:hover:after{
+        @include transform(scale(1.2));
+        @include transition(transform .3s);
+      }
+
+      &:after{
+        content: '\f101';
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 rem(5px);
+        font-family: 'FontAwesome';
+        @include transition(transform .3s);
+      }
+
+      &_active{
+        color: $secondary-color;
+
+        &:after{
+          display: none;
+        }
+      }
+    }
+  }
+}

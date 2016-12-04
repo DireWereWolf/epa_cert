@@ -2,9 +2,6 @@
 * Base styles, only tag selector use
 */
 
-/*Normalize*/
-@import "bower_components/normalize-scss/_normalize.scss";
-
 
 html{
   width: 100%;
@@ -14,6 +11,8 @@ html{
   line-height: $line-height-base;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body{
   overflow: hidden;
@@ -21,6 +20,8 @@ body{
 
 img,video,iframe{
   max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
 img{

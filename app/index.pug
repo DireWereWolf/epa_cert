@@ -26,7 +26,9 @@ html.no-js(lang='ru')
     // endbuild
   body
     <!--[if lt IE 10]>
-    p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    p.browserupgrade
+      |Вы используете <strong>устаревший</strong> браузер. Пожалуйста, <a href="http://browsehappy
+      |.com/">ОБНОВИТЕ ваш браузер здесь</a> для повышения отзывчивости.
     <![endif]-->
 
     //- page wrapper, get modifier, by page name
@@ -34,10 +36,7 @@ html.no-js(lang='ru')
       include layouts/partials/header
       include layouts/partials/hero/hero_main
 
-
-      main.content
-        .content__wrapper.c-wrap
-
+      main.page__content.content.c-wrap
           section.benefits
             h2.benefits__title.f-title Наши преимущества
             .benefits__items
@@ -73,34 +72,59 @@ html.no-js(lang='ru')
           section.menu-categories.menu-categories_main
             h3.menu-categories__title.f-title Наше меню
             .menu-categories__items
-              a.menu-categories__item.menu-category.menu-category_main(href="#")
-                .menu-category__title.f-title Горячие блюда
+              .menu-categories__item.menu-category.menu-category_main
+                a.menu-category__title.f-title(href="#") Горячие блюда
                 .menu-category__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
-              a.menu-categories__item.menu-category.menu-category_main(href="#")
-                .menu-category__title.f-title Холодные закуски
+              .menu-categories__item.menu-category.menu-category_main
+                a.menu-category__title.f-title(href="#") Холодные закуски
                 .menu-category__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
-              a.menu-categories__item.menu-category.menu-category_main(href="#")
-                .menu-category__title.f-title Десерты
+              .menu-categories__item.menu-category.menu-category_main
+                a.menu-category__title.f-title(href="#") Десерты
                 .menu-category__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
-              a.menu-categories__item.menu-category.menu-category_main(href="#")
-                .menu-category__title.f-title Напитки
+              .menu-categories__item.menu-category.menu-category_main
+                a.menu-category__title.f-title(href="#") Напитки
                 .menu-category__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
           //- menu-categories
 
           section.events.events_last-events-main
-            h3.events__title Cобытия
+            h3.events__title.f-title Последние события
             .events__items
-              .events__item.event
-                +img("",
-                {title: "event", className: "event__img", width: "80", height: "80"})
-                .event__title Event title
+              .events__item.event.event_main
+                a(href="#" title="Событие 1")
+                  +img("events/img_001.jpg",
+                  {title: "Событие 1", className: "event__img", width: "350", height: "234"})
+                a.event__title(href="#" title="Событие 1") Событие 1
                 .event__desc
                   .event__date 11.11.11
                   .event__prev-text
-                    | Lorem ipsum dolor sit amet
-              .events__item
-              .events__item
-              .events__item
+                    | Краткий текст о событии
+              .events__item.event.event_main
+                a(href="#" title="Событие 2")
+                  +img("events/img_002.jpg",
+                  {title: "Событие 2", className: "event__img", width: "350", height: "234"})
+                a.event__title(href="#" title="Событие 2") Событие 2
+                .event__desc
+                  .event__date 11.11.11
+                  .event__prev-text
+                    | Краткий текст о событии
+              .events__item.event.event_main
+                a(href="#" title="Событие 3")
+                  +img("events/img_003.jpg",
+                  {title: "Событие 3", className: "event__img", width: "350", height: "234"})
+                a.event__title(href="#" title="Событие 3") Событие 3
+                .event__desc
+                  .event__date 11.11.11
+                  .event__prev-text
+                    | Краткий текст о событии
+              .events__item.event.event_main
+                a(href="#" title="Событие 4")
+                  +img("events/img_004.jpg",
+                  {title: "Событие 4", className: "event__img", width: "350", height: "234"})
+                a.event__title(href="#" title="Событие 4") Событие 4
+                .event__desc
+                  .event__date 11.11.11
+                  .event__prev-text
+                    | Краткий текст о событии
           //- events end
 
 
@@ -109,6 +133,10 @@ html.no-js(lang='ru')
 
     include layouts/partials/analytics
 
+
+    |<!--[if IE 8]>
+    script(src="http://code.jquery.com/jquery-migrate-1.4.1.js")
+    |<![endif]-->
     // build:js scripts/vendor.js
     // bower:js
     script(src='/bower_components/jquery/dist/jquery.js')
@@ -116,10 +144,8 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
-    // build:js scripts/common.js
-    script(src='scripts/common.js')
-    // endbuild
-
     // build:js scripts/main.js
+    script(src='/bower_components/slick-carousel/slick/slick.js')
+    script(src='scripts/common.js')
     script(src='scripts/'+page+'.js')
     // endbuild

@@ -1,0 +1,62 @@
+.events{
+  /*Common*/
+
+
+  /*Specific*/
+  &_last-events-main{
+    .events{
+      &__title{
+        margin: 0 0 rem(20px);
+        @include font-size(30px);
+        text-align: center;
+      }
+      &__items{}
+      &__item{
+        @include span-columns(3);
+      }
+    }
+  }
+}
+
+.event{
+  /*Common*/
+
+  &__img{
+    display: block;
+    width: auto;
+    margin: 0 auto rem(10px);
+    border-radius: rem(5px);
+  }
+    &__title,
+    &__date{
+      margin-bottom: rem(5px);
+    }
+    &__title{
+      text-align: left;
+      @include font-size(20px);
+      @include font-weight($f-bold);
+    }
+    &__desc{
+      text-align: right;
+    }
+    &__date{
+      display: inline-block;
+      vertical-align: top;
+      padding: rem(2px) rem(5px);
+      @include font-size(14px);
+      background: $secondary-color;
+      color: $white;
+      border-radius: rem(10px);
+    }
+    &__prev-text{
+      text-align: left;
+    }
+
+  /*Specific*/
+  &_main{
+    margin-bottom: rem(40px);
+    .event{
+
+    }
+  }
+}

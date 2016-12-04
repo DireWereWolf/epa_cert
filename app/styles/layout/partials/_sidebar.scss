@@ -1,0 +1,14 @@
+.sidebar{
+  &_l{
+    @include span-columns(3)
+  }
+  &_r{
+    @include direction-context(right-to-left) {
+      @include span-columns(3);
+    }
+  }
+}
+
+.menu-categories{
+
+}

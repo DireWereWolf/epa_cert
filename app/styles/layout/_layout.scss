@@ -21,8 +21,25 @@
   @include font-size($base-px-default);
 }
 
+.page{
+  &__content{
+
+  }
+}
+
 .content{
   position: relative;
   padding: rem(40px) 0;
   color: $main-color;
+
+  &__wrapper{
+    &_l{
+      @include span-columns(9)
+    }
+    &_r{
+      @include direction-context(right-to-left) {
+        @include span-columns(9);
+      }
+    }
+  }
 }
