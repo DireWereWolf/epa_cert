@@ -69,21 +69,21 @@ html.no-js(lang='ru')
                   span.benefit__desc Только лучшие напитки
           //- benefits end
 
-          section.menu-categories.menu-categories_main
-            h3.menu-categories__title.f-title Наше меню
-            .menu-categories__items
-              .menu-categories__item.menu-category.menu-category_main
-                a.menu-category__title.f-title(href="#") Горячие блюда
-                .menu-category__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
-              .menu-categories__item.menu-category.menu-category_main
-                a.menu-category__title.f-title(href="#") Холодные закуски
-                .menu-category__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
-              .menu-categories__item.menu-category.menu-category_main
-                a.menu-category__title.f-title(href="#") Десерты
-                .menu-category__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
-              .menu-categories__item.menu-category.menu-category_main
-                a.menu-category__title.f-title(href="#") Напитки
-                .menu-category__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
+          section.menu-cats.menu-cats_main
+            h3.menu-cats__title.f-title Наше меню
+            .menu-cats__items
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Горячие блюда
+                .menu-cat__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Холодные закуски
+                .menu-cat__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Десерты
+                .menu-cat__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Напитки
+                .menu-cat__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
           //- menu-categories
 
           section.events.events_last-events-main
@@ -146,6 +146,9 @@ html.no-js(lang='ru')
 
     // build:js scripts/main.js
     script(src='/bower_components/slick-carousel/slick/slick.js')
+    script(src='/bower_components/jquery-modal/jquery.modal.js')
+    script(src='/bower_components/moment/moment.js')
+    script(src='/bower_components/pikaday/pikaday.js')
     script(src='scripts/common.js')
     script(src='scripts/'+page+'.js')
     // endbuild

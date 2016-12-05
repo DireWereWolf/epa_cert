@@ -1,8 +1,9 @@
-.hero.hero_main{
-  position: relative;
+@include block(hero){
+  @include modifier(main){
+    position: relative;
 
-  .hero{
-      &__title{
+    @include block(hero){
+      @include element(title){
         position: absolute;
         top: 40%;
         left: 50%;
@@ -16,5 +17,6 @@
         text-shadow: 1px 0 5px rgba(0, 0, 0, 0.8);
         z-index: 20;
       }
+    }
   }
 }

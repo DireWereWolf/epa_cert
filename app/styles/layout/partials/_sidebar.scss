@@ -1,14 +1,74 @@
-.sidebar{
-  &_l{
+/*sidebar themes*/
+@include block(sidebar){
+  @include modifier(l){//sidebar left side
     @include span-columns(3)
   }
-  &_r{
+  @include modifier(r){//sidebar right side
     @include direction-context(right-to-left) {
       @include span-columns(3);
     }
   }
 }
 
-.menu-categories{
+/*menu categories sidebar*/
+@include block(menu-cats){
 
+  @include modifier(sidebar){
+    margin-bottom: rem(30px);
+
+    @include block(menu-cats){
+
+      @include element(title){
+        margin: 0 0 rem(10px);
+        @include font-size(20px);
+        @include font-weight($f-bold);
+        text-align: center;
+      }
+
+      @include element(items){
+        padding: 0;
+
+        @include modifier(l1){
+          margin: rem(10px) 0;
+          border-bottom: rem(2px) solid $secondary-color;
+        }
+        @include modifier(l2){
+
+        }
+      }
+
+      @include element(item){
+        display: block;
+        @include font-size(18px);
+        color: $white;
+        border-bottom: rem(2px) solid $secondary-color;
+        white-space: nowrap;
+
+        &:first-child{
+          border-top: rem(2px) solid $secondary-color;
+        }
+        &:last-child{
+          border-bottom: 0;
+        }
+
+        @include modifier(l1){
+          padding-left: 5%;
+          background: $ternary-color;
+        }
+        @include modifier(l2){
+          padding-left: 5%;
+          background: lighten($ternary-color, 5%);
+        }
+        @include modifier(l3){
+           padding-left: 5%;
+          background: lighten($ternary-color, 10%);
+        }
+      }
+
+      @include element(item-title){
+        display: block;
+        @include line-height(40px);
+      }
+    }
+  }
 }

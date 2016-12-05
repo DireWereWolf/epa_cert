@@ -54,10 +54,11 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
-    // build:js scripts/common.js
+    //- build:js scripts/events.js
+    script(src='/bower_components/slick-carousel/slick/slick.js')
+    script(src='/bower_components/jquery-modal/jquery.modal.js')
+    script(src='/bower_components/moment/moment.js')
+    script(src='/bower_components/pikaday/pikaday.js')
     script(src='scripts/common.js')
-    // endbuild
-
-    //- build:js scripts/main.js
-    //-script(src='scripts/'+page+'.js')
+    script(src='scripts/'+page+'.js')
     //- endbuild

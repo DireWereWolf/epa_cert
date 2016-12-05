@@ -1,15 +1,16 @@
-.benefits{
+/*benefits*/
+@include block(benefits){
   margin-bottom: rem(40px);
 
-  &__title{
+  @include element(title){
     margin: 0 0 rem(20px);
     @include font-size(30px);
     text-align: center;
   }
-  &__items{
+  @include element(items){
     @include clearfix;
   }
-  &__item{
+  @include element(item){
     @include span-columns(3);
     text-align: center;
 
@@ -22,14 +23,9 @@
   }
 }
 
-.benefit{
+/*benefit*/
+@include block(benefit){
   padding: rem(10px);
-
-  &__img{
-    max-width: rem(80px);
-    margin-bottom: rem(10px);
-    @include transition(transform .4s);
-  }
 
   &__title,
   &__desc{
@@ -37,7 +33,14 @@
     word-wrap: break-word;
   }
 
-  &__title{
+  @include element(img){
+    max-width: rem(80px);
+    margin-bottom: rem(10px);
+    @include transition(transform .4s);
+  }
+
+
+  @include element(title){
     margin-bottom: rem(10px);
     @include font-size(20px);
   }

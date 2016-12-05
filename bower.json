@@ -8,7 +8,11 @@
     "bourbon": "^4.2.7",
     "neat": "^1.8.0",
     "font-awesome": "fontawesome#^4.7.0",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "jquery-modal": "^0.8.0",
+    "open-color": "^1.4.1",
+    "moment": "^2.17.1",
+    "pikaday": "^1.5.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

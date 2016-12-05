@@ -21,25 +21,44 @@
   @include font-size($base-px-default);
 }
 
-.page{
-  &__content{
-
-  }
+/*buttons*/
+@include block(btn){
+  @include modifier(lime){
+    color: $white;
+    background: $oc-lime-5;
+  };
+  @include modifier(blue){
+    color: $white;
+    background: $oc-blue-5;
+  };
+  @include modifier(yellow){
+    color: $white;
+    background: $oc-yellow-5;
+  };
+  @include modifier(red){
+    color: $white;
+    background: $oc-red-5;
+  };
 }
 
-.content{
+
+
+@include block(content){
   position: relative;
   padding: rem(40px) 0;
+  min-height: rem(200px);
   color: $main-color;
 
-  &__wrapper{
-    &_l{
+  @include element(wrapper){
+
+    @include modifier(l){
       @include span-columns(9)
     }
-    &_r{
+    @include modifier(r){
       @include direction-context(right-to-left) {
         @include span-columns(9);
       }
     }
+
   }
 }

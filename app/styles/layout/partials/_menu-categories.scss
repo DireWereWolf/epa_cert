@@ -1,17 +1,23 @@
-.menu-categories{
-  &_main{
+/*menu categories main*/
+@include block(menu-cats){
+
+  @include modifier(main){
     margin-bottom: rem(30px);
-    .menu-categories{
-      &__title{
+
+    @include block(menu-cats){
+
+      @include element(title){
         margin: 0 0 rem(20px);
         @include font-size(30px);
         text-align: center;
       }
-      &__items{
+
+      @include element(items){
         text-align: center;
         font-size:0;
       }
-      &__item{
+
+      @include element(item){
         display: inline-block;
         vertical-align: middle;
         width: 50%;
@@ -23,14 +29,16 @@
       }
     }
   }
-
 }
 
-.menu-category{
+/*menu category main*/
+@include block(menu-cat){
 
-  &_main{
+  @include modifier(main){
     position: relative;
-    .menu-category{
+
+    @include block(menu-cat){
+
       &__title,
       &__img{
         position: absolute;
@@ -39,7 +47,7 @@
         max-width: rem(560px);
       }
 
-      &__title{
+      @include element(title){
         height: inherit;
         max-height: rem(280px);
         background-color: rgba($main-color, .5);
@@ -54,11 +62,13 @@
           @include transition(background .3s);
         }
       }
-      &__img{
+
+      @include element(img){
         background: $main-color;
         height: inherit;
         z-index: -1;
       }
+
     }
   }
 }

@@ -1,7 +1,6 @@
 /* Main page js */
 
 $(document).ready(function () {
-  myApp.viewPort();
   myApp.slider('.js-hero-slider', {
 
     accessibility: true,
@@ -15,7 +14,6 @@ $(document).ready(function () {
     zIndex:10,
 
   });
-
 });
 
 

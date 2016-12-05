@@ -2,20 +2,21 @@
 * Base styles, only tag selector use
 */
 
-
-html{
+html,body{
   width: 100%;
   height: 100%;
+}
+html{
   font-family:'Ubuntu', 'Comfortaa', Arial, Helvetica, sans-serif;
   font-size:$base-px-default;
   line-height: $line-height-base;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 body{
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 img,video,iframe{

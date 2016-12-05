@@ -1,0 +1,134 @@
+@include block(hall){
+
+  @include element(settings){
+    padding: rem(20px) 0;
+    text-align: center;
+    font-size:0;
+  }
+
+  @include element(settings-title){
+    text-align: right;
+    margin-bottom: rem(10px);
+    @include font-weight($f-bold);
+    @include font-size(18px);
+  }
+
+  @include element(setting-btn){
+    padding: 0 rem(5px);
+    @include line-height(30px);
+    border-radius: 5px;
+  }
+
+  @include element(setting){
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+    @include font-size(16px);
+    white-space: nowrap;
+  }
+
+  @include element(wrapper){
+    max-width: 80%;
+    margin: rem(20px) auto;
+  }
+
+  @include element(sec){
+    width: 100%;
+    min-height: rem(60px);
+    padding: rem(20px) 0;
+    font-size:0;
+
+    &1{
+
+    }
+    &2{
+      float: left;
+      max-width: 20%;
+      margin-right: rem(20px);
+      padding: rem(40px) 0;
+      min-height: rem(340px);
+    }
+    &3{
+
+    }
+    &4{
+
+    }
+    &5{
+
+    }
+    &6{
+      clear: both;
+    }
+  }
+}
+/*Scheme fountain template*/
+@include block(fountain){
+  min-height: inherit;
+  background: $oc-blue-3;
+}
+
+/*Scheme table template*/
+@include block(table){
+  $table-color: #de753c;
+
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 15%;
+  margin: 0 rem(10px);
+  padding: rem(5px);
+  text-align: center;
+  @include font-size(16px);
+  background: $table-color;
+  border-radius: rem(5px);
+  cursor: pointer;
+
+  /*Orientation*/
+  @include modifier(vert){//vertical
+    max-width: rem(60px);
+    height: rem(80px);
+  };
+  @include modifier(hori){//horizontal
+    max-width: rem(80px);
+    height: rem(60px);
+  };
+  //choose state
+  @include modifier(checked){
+    outline: rem(3px) solid $oc-teal-3;
+  }
+  //reserved state4
+  @include modifier(reserved){
+    background: $oc-red-6;
+  }
+
+  @include element(num){
+    padding: 0 rem(5px);
+    background: $white;
+    border-radius: 50%;
+    @include font-weight($f-bold);
+  }
+
+  @include element(spots){
+    display: block;
+    max-width: rem(40px);
+    margin:rem(3px) auto;
+    background: $oc-violet-2;
+    @include font-weight($f-bold);
+    border-radius: rem(10px);
+
+    &-ic,
+    &-num{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    &-ic{
+      margin-left: 5%;
+    }
+  }
+
+  @include element(alert){
+    background: $oc-red-7;
+    color: $white;
+  }
+}

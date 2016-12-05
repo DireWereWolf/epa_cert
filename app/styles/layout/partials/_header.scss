@@ -1,30 +1,31 @@
-.header{
+@include block(header){
   background: $header-bg;
   background-image: url("../images/header_bg.png");
   text-align: center;
 
-  &__wrapper{
+  @include element(wrapper){
     position: relative;
     overflow: hidden;
   }
 
-  &__contacts{
+  @include element(contacts){
     @include span-columns(4);
     padding: rem(35px) 0;
     min-height: inherit;
   }
-  &__contact{
+
+  @include element(contact){
     color: $ternary-color;
     white-space: nowrap;
   }
-  &__logo-wrapper{
+  @include element(logo-wrapper){
     position: absolute;
     width: rem(80px);
     top: rem(10px);
     left: 50%;
     margin-left: rem(-80px);
   }
-  &__order{
+  @include element(order){
     @include direction-context(right-to-left){
       @include span-columns(4);
       padding: rem(35px) 0;
@@ -36,19 +37,22 @@
       color: $ternary-color;
     }
   }
-  &__nav{
+
+  @include element(nav){
     clear: both;
     margin-left: -100%;
     margin-right: -100%;
     background: $secondary-color;
   }
-  &__search{
+
+  @include element(search){
     padding: rem(20px) 0;
     text-align: center;
   }
 }
 
-.main-nav{
+/*Main navigation*/
+@include block(main-nav){
   text-align: center;
 
   &__wrapper{

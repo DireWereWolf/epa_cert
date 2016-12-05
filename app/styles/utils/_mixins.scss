@@ -10,13 +10,7 @@
 @mixin font-weight($type){
   @if $type == "700" {
     font-weight: 700;
-  } @else if $type == "700i" {
-    font-weight: 700;
-    font-style:italic;
-  } @else if $type == "400i" {
-    font-weight: 400;
-    font-style: italic;
-  } @else {
+  }@else {
     font-weight: 400;
   }
 }
@@ -26,5 +20,25 @@
 @mixin letterpress($opacity: 0.5, $color: $white){
   text-shadow: rgba($color,$opacity) 0 1px 0;
 }
+
+
+//BEM
+@mixin block($name){
+  .#{$name}{
+    @content
+  }
+}
+@mixin modifier($name) {
+  @at-root #{&}_#{$name} {
+    @content
+  }
+}
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content
+  }
+}
+
+
 
 

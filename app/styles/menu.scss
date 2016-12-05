@@ -6,7 +6,10 @@
 // Visual parts
 @import "layout/partials/header";
 @import "layout/partials/hero-inner";
+@import "layout/partials/sidebar";
 @import "layout/partials/footer";
 
 // Modules
 @import "modules/search";
+@import "modules/modal";
+@import "modules/hall";
