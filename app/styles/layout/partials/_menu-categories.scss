@@ -22,7 +22,7 @@
         vertical-align: middle;
         width: 50%;
         height: rem(300px);
-        padding: rem(20px) rem(20px) 0;
+        //padding: rem(20px) rem(20px) 0;
         margin-bottom: rem(20px);
         @include font-size(16px);
         overflow: hidden;
@@ -43,8 +43,13 @@
       &__img{
         position: absolute;
         display: block;
-        width: 100%;
-        max-width: rem(560px);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin:rem(20px);
+        //width: 100%;
+        //max-width: rem(560px);
       }
 
       @include element(title){

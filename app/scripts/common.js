@@ -118,9 +118,9 @@ constructor(){
     let tables = document.querySelectorAll(myApp.selectors.table);
 
     for (let i = 0; i < myApp.store.tables.length; i+=1){
-      tables[i].setAttribute("data-num", myApp.store.tables[i].id);
-      tables[i].setAttribute("data-spots", myApp.store.tables[i].spots);
-      tables[i].setAttribute("data-is-reserved", myApp.store.tables[i].isReserved);
+      tables[i].setAttribute('data-num', myApp.store.tables[i].id);
+      tables[i].setAttribute('data-spots', myApp.store.tables[i].spots);
+      tables[i].setAttribute('data-is-reserved', myApp.store.tables[i].isReserved);
     }
   }
 
@@ -135,8 +135,8 @@ constructor(){
         elems_spots = document.querySelectorAll('.table__spots-num');
 
     for (let i=0; i < tables.length; i+=1){
-      elems_num[i].innerText = tables[i].getAttribute("data-num");
-      elems_spots[i].innerText = tables[i].getAttribute("data-spots");
+      elems_num[i].innerText = tables[i].getAttribute('data-num');
+      elems_spots[i].innerText = tables[i].getAttribute('data-spots');
     }
   }
 
@@ -144,9 +144,9 @@ constructor(){
     $(selector).click(function (e) {
 
       let elem = e.currentTarget,
-          status = elem.getAttribute("data-is-reserved");
+          status = elem.getAttribute('data-is-reserved');
 
-      if (status === "false"){
+      if (status === 'false'){
         $(elem).toggleClass('table_checked');
         elem.setAttribute('data-is-checked', 'true');
       }
@@ -162,9 +162,9 @@ constructor(){
     for (let i=0; i < tables.length; i+=1){
 
       table =  tables[i];
-      table_stat = tables[i].getAttribute("data-is-reserved");
+      table_stat = tables[i].getAttribute('data-is-reserved');
 
-      if (table_stat === "true"){
+      if (table_stat === 'true'){
         $(table).addClass('table_reserved').attr('title', 'Стол заказан на сегодня');
       }
 
@@ -210,14 +210,14 @@ $(document).ready(function () {
 
   myApp.viewPort();
 
-  myApp.modal(".js-modal-open", {
+  myApp.modal('.js-modal-open', {
     closeExisting: true,
     escapeClose: true,
     clickClose: true,
     closeText: 'Close',
     closeClass: 'modal__close',
     showClose: true,
-    modalClass: "modal modal_order",
+    modalClass: 'modal modal_order',
     spinnerHtml: null,
     showSpinner: true,
     fadeDuration: null,
@@ -250,7 +250,7 @@ $(document).ready(function () {
 
       })
       .fail(function() {
-        console.error(`Request wasn\'t send, cannot get json data`);
+        console.error('Request wasn\'t send, cannot get json data');
       })
 
   });

@@ -1,4 +1,4 @@
-include layouts/helpers/mixins
+include ../../layouts/helpers/mixins
 - var page = 'menu';
 
 doctype html
@@ -30,7 +30,7 @@ html.no-js(lang='ru')
 
     //- page wrapper, get modifier, by page name
     +page(page)
-      include layouts/partials/header
+      include ../../blocks/header/header
 
       +hero-content("Наше меню", "images/hero_menu.jpg", [
         { url: "index.html",
@@ -63,9 +63,9 @@ html.no-js(lang='ru')
 
         main.content__wrapper.content__wrapper_r
           h2 Content
-      include layouts/partials/footer
+      include ../../blocks/footer/footer
 
-    include layouts/partials/analytics
+    +analytics
 
     // build:js scripts/vendor.js
     // bower:js

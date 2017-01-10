@@ -4,6 +4,7 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const rename = require('gulp-rename');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -11,7 +12,9 @@ const reload = browserSync.reload;
 var dev = true;
 
 gulp.task('styles', () => {
-  return gulp.src('app/styles/*.scss')
+  return gulp.src(
+    'app/**/*.scss'
+  )
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -21,6 +24,7 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
+    .pipe(rename({dirname: ''}))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
@@ -53,15 +57,16 @@ gulp.task('lint:test', () => {
 });
 
 gulp.task('views', () => {
-  return gulp.src('app/*.pug')
+  return gulp.src('app/pages/**/*.pug')
     .pipe($.plumber())
     .pipe($.pug({pretty: true}))
-    .pipe(gulp.dest('.tmp'))
+    .pipe(rename({dirname: ''}))
+    .pipe(gulp.dest('.tmp/'))
     .pipe(reload({stream: true}));
 });
 
 gulp.task('html', ['views', 'styles', 'scripts'], () => {
-  return gulp.src(['app/*.html', '.tmp/*.html'])
+  return gulp.src(['app/*.html', '.tmp/**/*.html'])
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
@@ -119,7 +124,8 @@ gulp.task('serve', () => {
     ]).on('change', reload);
 
     gulp.watch('app/**/*.pug', ['views']);
-    gulp.watch('app/styles/**/*.scss', ['styles']);
+    // gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('app/**/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('app/data/**/*', ['data']);

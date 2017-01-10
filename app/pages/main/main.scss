@@ -1,0 +1,18 @@
+// Vars, mixins, libs(in utils)
+@import "../../styles/utils/utils";
+@import "../../styles/base/base";
+@import "../../styles/layout/layout";
+
+// Visual parts
+@import "../../blocks/header/header";
+@import "../../blocks/hero/hero-main";
+@import "../../styles/layout/partials/benefits";
+@import "../../styles/layout/partials/menu-categories";
+@import "../../styles/layout/partials/events";
+@import "../../blocks/footer/footer";
+//
+//// Modules
+@import "../../styles/modules/search";
+@import "../../styles/modules/slider";
+@import "../../styles/modules/modal";
+@import "../../styles/modules/hall";

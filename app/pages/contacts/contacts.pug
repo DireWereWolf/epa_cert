@@ -1,5 +1,5 @@
-include layouts/helpers/mixins
-- var page = 'about';
+include ../../layouts/helpers/mixins
+- var page = 'contacts';
 
 doctype html
 html.no-js(lang='ru')
@@ -16,7 +16,7 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
-    // build:css styles/about.css
+    // build:css styles/contacts.css
     link(rel='stylesheet', href='styles/'+page+'.css')
     // endbuild
 
@@ -30,23 +30,22 @@ html.no-js(lang='ru')
 
     //- page wrapper, get modifier, by page name
     +page(page)
-      include layouts/partials/header
+      include ../../blocks/header/header
 
-      +hero-content("О нас", "http://placehold.it/350x150", [
+      +hero-content("Контакты", "http://placehold.it/350x150", [
         { url: "index.html",
           text: "Главная"},
-        { url: "#",
-          text: "О нас"}
+        { text: "Контакты"}
       ])
 
 
       main.content
 
 
-      include layouts/partials/footer
+      include ../../blocks/footer/footer
 
 
-    include layouts/partials/analytics
+    +analytics
 
     // build:js scripts/vendor.js
     // bower:js
@@ -55,7 +54,7 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
-    //- build:js scripts/about.js
+    //- build:js scripts/contacts.js
     script(src='/bower_components/slick-carousel/slick/slick.js')
     script(src='/bower_components/jquery-modal/jquery.modal.js')
     script(src='/bower_components/moment/moment.js')
