@@ -44,14 +44,32 @@ mixin hero-content(title, image, pag_items)
             a.pagination__item(href=val.url)= val.text
 
 //-
- Google Analytics mixin, input === id: change UA- to be your site's ID.
+ Google Analytics mixin, input === id
 //-
 mixin analytics
-  -var google_id = 'XXXXX-X';
-  script.
+  -var google_id = 'XXXXX-X'; //for example
+  //-script.
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='https://www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-'+google_id+'');ga('send','pageview');
+
+
+//-
+  sidebar mixin
+//-
+mixin sidebar(direction)
+  if direction === 'left'
+    aside.sidebar.sidebar_l
+      if block
+        block
+      else
+        p No content provided
+  else if direction === 'right'
+    aside.sidebar.sidebar_r
+      if block
+        block
+      else
+        p No content provided

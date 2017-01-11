@@ -24,9 +24,7 @@ html.no-js(lang='ru')
     script(src='/bower_components/modernizr/modernizr.js')
     // endbuild
   body
-    <!--[if lt IE 10]>
-    p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-    <![endif]-->
+    include ../../blocks/browsupgrade/browserupgrade
 
     //- page wrapper, get modifier, by page name
     +page(page)

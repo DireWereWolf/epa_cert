@@ -16,7 +16,8 @@ html.no-js(lang='ru')
     // endbower
     // endbuild
 
-    |<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Ubuntu:400,500,500i&amp;subset=cyrillic" rel="stylesheet">
+    link(href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Ubuntu:400,500,500i&amp;subset=cyrillic"
+    rel="stylesheet")
     // build:css styles/main.css
     link(rel='stylesheet', href='styles/'+page+'.css')
     // endbuild
@@ -24,12 +25,17 @@ html.no-js(lang='ru')
     // build:js scripts/vendor/modernizr.js
     script(src='/bower_components/modernizr/modernizr.js')
     // endbuild
-  body
-    <!--[if lt IE 10]>
-    p.browserupgrade
-      |Вы используете <strong>устаревший</strong> браузер. Пожалуйста, <a href="http://browsehappy
-      |.com/">ОБНОВИТЕ ваш браузер здесь</a> для повышения отзывчивости.
+
+
+    <!--[if lt IE 9]>
+    // build:js scripts/vendor/polyfills.js
+    script(src='/bower_components/REM-unit-polyfill/js/rem.js')
+    script(src='scripts/libs/selectivizr/selectivizr.js')
+    // endbuild
     <![endif]-->
+
+  body
+    include ../../blocks/browsupgrade/browserupgrade
 
     //- page wrapper, get modifier, by page name
     +page(page)
@@ -133,14 +139,9 @@ html.no-js(lang='ru')
 
     +analytics
 
-
-    |<!--[if IE 8]>
-    script(src="http://code.jquery.com/jquery-migrate-1.4.1.js")
-    |<![endif]-->
-    // build:js scripts/vendor.js
+    // build:js scripts/jquery.js
     // bower:js
     script(src='/bower_components/jquery/dist/jquery.js')
-    script(src='/bower_components/modernizr/modernizr.js')
     // endbower
     // endbuild
 

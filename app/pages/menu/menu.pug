@@ -24,9 +24,7 @@ html.no-js(lang='ru')
     script(src='/bower_components/modernizr/modernizr.js')
     // endbuild
   body
-    <!--[if lt IE 10]>
-    p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-    <![endif]-->
+    include ../../blocks/browsupgrade/browserupgrade
 
     //- page wrapper, get modifier, by page name
     +page(page)
@@ -39,27 +37,8 @@ html.no-js(lang='ru')
           text: "Наше меню"}
       ])
       .page__content.c-wrap.content
-        aside.sidebar.sidebar_l
-          .menu-cats.menu-cats_sidebar
-            .menu-cats__title.f-title Категории
-
-            ul.menu-cats__items.menu-cats__items_l1
-              li.menu-cats__item.menu-cats__item_l1
-                span.menu-cats__item-title Горячие блюда
-
-              li.menu-cats__item.menu-cats__item_l1
-                span.menu-cats__item-title Холодные закуски
-
-              li.menu-cats__item.menu-cats__item_l1
-                span.menu-cats__item-title Десерты
-
-              li.menu-cats__item.menu-cats__item_l1
-                span.menu-cats__item-title Напитки
-                ul.menu-cats__items.menu-cats__items_l2
-                  li.menu-cats__item.menu-cats__item_l2
-                    span.menu-cats__item-title Алкогольные
-                  li.menu-cats__item.menu-cats__item_l2
-                    span.menu-cats__item-title Безалкогольные
+        +sidebar('left')
+          include ../../blocks/menu-categories/menu-categories-sidebar
 
         main.content__wrapper.content__wrapper_r
           h2 Content
