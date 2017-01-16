@@ -4,17 +4,16 @@ if (!window.jQuery){
 
 class App{
 
-constructor(){
-  this.window_width;
-  this.window_height;
-  this.debug = {
-    status: false,
-    showViewPort: false
-  };
-}
+  constructor(){
+    this.window_width;
+    this.window_height;
+    this.debug = {
+      status: false,
+      showViewPort: false
+    };
+  }
 
 /*Public methods*/
-
   /**
    *  Check viewport size on your need
    * @returns {window_width & window_height}
@@ -30,12 +29,10 @@ constructor(){
   }
 
   /**
-   *  Check viewport size after dragged window (optimize default resize of jQuery)
-   * @returns {window_width & window_height}
-   * @private {false}
+   * Optimizing default event triggers, works after event end.
    */
-  viewPortAfterResize(){
-    let waitForFinalEvent = (function () {
+  waitForFinalEvent(){
+    return (function () {
       let timers = {};
       return function (callback, ms, uniqueId) {
         if (!uniqueId) {
@@ -47,19 +44,76 @@ constructor(){
         timers[uniqueId] = setTimeout(callback, ms);
       };
     })();
+  };
+
+  /**
+   *  Check viewport size after dragged window (optimize default resize of jQuery)
+   * @returns {window_width & window_height}
+   * @private {false}
+   */
+  viewPortAfterResize(){
+
+    let endResizing = this.waitForFinalEvent();
 
     $(window).resize(() => {
-        waitForFinalEvent(()=>{
+      endResizing(()=>{
           this.window_width  = window.innerWidth;
           this.window_height = window.innerHeight;
 
           if (this.debug.showViewPort){
             console.log(`viewport width:${this.window_width}px\nviewport height:${this.window_height}px`);
           }
+
         }, 500, 'some unique string');
     });
   }
 
+  /**
+   * Mobile menu functionality
+   * @param buttonSelector
+   * @param menuWrapper
+   */
+  mobileMenu(buttonSelector, menuWrapper){
+
+    let button = $(buttonSelector),
+        buttonIcon = $(`${buttonSelector} > .fa`),
+        icon_up = 'fa-angle-up', //font-awesome class for trigger icon
+        icon_down = 'fa-angle-down', //font-awesome class for trigger icon
+        list = $(menuWrapper);
+
+    $(document).ready(()=>{
+
+      buttonIcon.addClass(icon_down);
+
+      $(button).unbind().click((e)=>{
+        e.preventDefault();
+        let w = this.window_width,
+            endResizing = this.waitForFinalEvent();
+
+        $(window).on('resize', ()=>{
+          endResizing(()=>{
+            if (this.window_width > 768){
+              list.removeAttr('style');
+            }
+            return w;
+          }, 500, 'some unique string');
+          return w;
+        });
+
+        if (w < 769){
+          list.slideToggle();
+          if (buttonIcon.hasClass(icon_up)){
+            buttonIcon.removeClass(icon_up);
+            buttonIcon.addClass(icon_down);
+          }else if(buttonIcon.hasClass(icon_down)){
+            buttonIcon.removeClass(icon_down);
+            buttonIcon.addClass(icon_up);
+          }
+        }
+      })
+
+    });
+  };
 /**
   *  Slick slider factory method, plugin doc http://kenwheeler.github.io/slick/
  * @param selector (selector string)
@@ -201,14 +255,19 @@ myApp.selectors = {
  * */
 myApp.debug = {
   status:true,
-  showViewPort: false
+  showViewPort: true
 };
 
-myApp.viewPortAfterResize();
+// $(window).resize(myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1'));
+
+myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1');
 
 $(document).ready(function () {
 
   myApp.viewPort();
+  myApp.viewPortAfterResize();
+
+  myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1')
 
   myApp.modal('.js-modal-open', {
     closeExisting: true,

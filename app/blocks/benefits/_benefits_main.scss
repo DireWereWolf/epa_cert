@@ -6,6 +6,10 @@
     margin: 0 0 rem(20px);
     @include font-size(30px);
     text-align: center;
+
+    @include mobile{
+      padding: 0 rem(10px);
+    }
   }
   @include element(items){
     @include clearfix;
@@ -18,6 +22,16 @@
       .benefit__img{
         @include transform(scale(1.2));
         @include transition(transform .4s);
+      }
+    }
+
+    @include mobile{
+      @include span-columns(12);
+      @include omega;
+      margin-bottom: rem(20px);
+
+      &:last-child{
+        margin-bottom: 0;
       }
     }
   }

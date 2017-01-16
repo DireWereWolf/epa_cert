@@ -5,6 +5,7 @@
 
   @include element(wrapper){
     position: relative;
+    padding: 0 rem(10px);
     overflow: hidden;
   }
 
@@ -12,6 +13,12 @@
     @include span-columns(4);
     padding: rem(35px) 0;
     min-height: inherit;
+
+    @include mobile{
+      @include span-columns(12);
+      @include omega;
+      padding: rem(5px) 0;
+    }
   }
 
   @include element(contact){
@@ -24,6 +31,12 @@
     top: rem(10px);
     left: 50%;
     margin-left: rem(-80px);
+
+    @include mobile{
+      position: static;
+      display: block;
+      margin: rem(20px) auto;
+    }
   }
   @include element(order){
     @include direction-context(right-to-left){
@@ -36,6 +49,11 @@
     &-btn{
       color: $ternary-color;
     }
+    @include mobile{
+      @include span-columns(12);
+      @include omega;
+      padding: rem(5px) 0;
+    }
   }
 
   @include element(nav){
@@ -43,56 +61,14 @@
     margin-left: -100%;
     margin-right: -100%;
     background: $secondary-color;
+
+    @include mobile{
+      margin: auto;
+    }
   }
 
   @include element(search){
     padding: rem(20px) 0;
     text-align: center;
-  }
-}
-
-/*Main navigation*/
-@include block(main-nav){
-  text-align: center;
-
-  &__wrapper{
-    @include outer-container;
-  }
-
-  &__button{
-    display: none;
-  }
-  &__items{
-    padding: 0;
-    margin: 0;
-    font-size:0;
-  }
-  &__item{
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 rem(15px) 0 0;
-    margin-right: rem(15px);
-    font-family: $ff-menu, sans-serif;
-    @include font-size(18px);
-    @include line-height(50px);
-    @include letterpress(0.75);
-    color: $main-color;
-    border-right: rem(2px) solid $main-color;
-    border-radius: rem(25px);
-    list-style: none;
-
-  }
-  &__link{
-    color: inherit;
-    @include transition(color .4s, text-shadow .4s, border-color .3s);
-
-    &:hover{
-      color: $white;
-      @include letterpress(0.75, $main-color);
-    }
-    &:active{
-      color:$ternary-color;
-      border-color: transparent;
-    }
   }
 }
