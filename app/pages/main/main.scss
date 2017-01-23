@@ -9,11 +9,9 @@
 @import "../../blocks/hero/hero-main";
 @import "../../blocks/benefits/benefits_main";
 @import "../../blocks/menu-categories/menu-categories_main";
-@import "../../styles/layout/partials/events";
+@import "../../blocks/events/events_main";
 @import "../../blocks/footer/footer";
-//
-//// Modules
-@import "../../styles/modules/search";
+
+// Modules
+@import "../../styles/modules/common-modules";
 @import "../../styles/modules/slider";
-@import "../../styles/modules/modal";
-@import "../../styles/modules/hall";

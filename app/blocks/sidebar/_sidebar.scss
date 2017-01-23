@@ -1,11 +1,23 @@
 /*sidebar themes*/
 @include block(sidebar){
   @include modifier(l){//sidebar left side
-    @include span-columns(3)
+    @include span-columns(3);
+
+    @include mobile{
+      width: 100%;
+      padding: 0 rem(10px);
+      margin-bottom: rem(20px);
+    }
   }
   @include modifier(r){//sidebar right side
     @include direction-context(right-to-left) {
       @include span-columns(3);
+
+      @include mobile{
+        width: 100%;
+        padding: 0 rem(10px);
+        margin-bottom: rem(20px);
+      }
     }
   }
 }

@@ -2,62 +2,45 @@ include ../../layouts/helpers/mixins
 - var page = 'menu';
 
 doctype html
-html.no-js(lang='ru')
-  head
-    meta(charset='utf-8')
-    meta(name='description', content='Информация о нашем ресторане и его история')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title О ресторане
-    link(rel='apple-touch-icon', href='apple-touch-icon.png')
-    // Place favicon.ico in the root directory
++head({
+  title: 'Наше меню',
+  description: 'Лучшие блюда для вас!'
+})
+body
+  include ../../blocks/browsupgrade/browserupgrade
 
-    // build:css styles/vendor.css
-    // bower:css
-    // endbower
-    // endbuild
+  //- page wrapper, get modifier, by page name
+  +page(page)
+    include ../../blocks/header/header
 
-    // build:css styles/menu.css
-    link(rel='stylesheet', href='styles/'+page+'.css')
-    // endbuild
+    +hero-content("Наше меню", "images/hero_menu.jpg", [
+      { url: "index.html",
+        text: "Главная"},
+      { url: "#",
+        text: "Наше меню"}
+    ])
+    .page__content.c-wrap.content
+      +sidebar('left')
+        include ../../blocks/menu-categories/menu-categories_sidebar
 
-    // build:js scripts/vendor/modernizr.js
-    script(src='/bower_components/modernizr/modernizr.js')
-    // endbuild
-  body
-    include ../../blocks/browsupgrade/browserupgrade
+      main.content__wrapper.content__wrapper_r
+        h2 Content
+    include ../../blocks/footer/footer
 
-    //- page wrapper, get modifier, by page name
-    +page(page)
-      include ../../blocks/header/header
+  +analytics
 
-      +hero-content("Наше меню", "images/hero_menu.jpg", [
-        { url: "index.html",
-          text: "Главная"},
-        { url: "#",
-          text: "Наше меню"}
-      ])
-      .page__content.c-wrap.content
-        +sidebar('left')
-          include ../../blocks/menu-categories/menu-categories_sidebar
+  // build:js scripts/vendor.js
+  // bower:js
+  script(src='/bower_components/jquery/dist/jquery.js')
+  script(src='/bower_components/modernizr/modernizr.js')
+  // endbower
+  // endbuild
 
-        main.content__wrapper.content__wrapper_r
-          h2 Content
-      include ../../blocks/footer/footer
-
-    +analytics
-
-    // build:js scripts/vendor.js
-    // bower:js
-    script(src='/bower_components/jquery/dist/jquery.js')
-    script(src='/bower_components/modernizr/modernizr.js')
-    // endbower
-    // endbuild
-
-    //- build:js scripts/menu.js
-    script(src='/bower_components/slick-carousel/slick/slick.js')
-    script(src='/bower_components/jquery-modal/jquery.modal.js')
-    script(src='/bower_components/moment/moment.js')
-    script(src='/bower_components/pikaday/pikaday.js')
-    script(src='scripts/common.js')
-    script(src='scripts/'+page+'.js')
-    //- endbuild
+  //- build:js scripts/menu.js
+  script(src='/bower_components/slick-carousel/slick/slick.js')
+  script(src='/bower_components/jquery-modal/jquery.modal.js')
+  script(src='/bower_components/moment/moment.js')
+  script(src='/bower_components/pikaday/pikaday.js')
+  script(src='scripts/common.js')
+  script(src='scripts/'+page+'.js')
+  //- endbuild

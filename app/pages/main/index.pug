@@ -2,124 +2,57 @@ include ../../layouts/helpers/mixins
 - var page = 'main';
 
 doctype html
-html.no-js(lang='ru')
-  head
-    meta(charset='utf-8')
-    meta(name='description', content='Лучший ресторан вашего города!')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Ресторан
-    link(rel='apple-touch-icon', href='apple-touch-icon.png')
-    // Place favicon.ico in the root directory
++head({
+  title: 'Главная',
+  description: 'Лучший ресторан Киева'
+})
+body
+  include ../../blocks/browsupgrade/browserupgrade
 
-    // build:css styles/vendor.css
-    // bower:css
-    // endbower
-    // endbuild
+  //- page wrapper, get modifier, by page name
+  +page(page)
+    include ../../blocks/header/header
+    include ../../blocks/hero/hero_main
 
-    link(href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Ubuntu:400,500,500i&amp;subset=cyrillic"
-    rel="stylesheet")
-    // build:css styles/main.css
-    link(rel='stylesheet', href='styles/'+page+'.css')
-    // endbuild
+    main.page__content.content.c-wrap
+        include ../../blocks/benefits/benefits_main
+        section.menu-cats.menu-cats_main
+          h3.menu-cats__title.f-title Наше меню
+          .menu-cats__items
+            .menu-cats__item.menu-cat.menu-cat_main
+              a.menu-cat__title.f-title(href="#") Горячие блюда
+              .menu-cat__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
+            .menu-cats__item.menu-cat.menu-cat_main
+              a.menu-cat__title.f-title(href="#") Холодные закуски
+              .menu-cat__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
+            .menu-cats__item.menu-cat.menu-cat_main
+              a.menu-cat__title.f-title(href="#") Десерты
+              .menu-cat__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
+            .menu-cats__item.menu-cat.menu-cat_main
+              a.menu-cat__title.f-title(href="#") Напитки
+              .menu-cat__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
+        //- menu-categories
 
-    // build:js scripts/vendor/modernizr.js
-    script(src='/bower_components/modernizr/modernizr.js')
-    // endbuild
-
-
-    <!--[if lt IE 9]>
-    // build:js scripts/vendor/polyfills.js
-    script(src='/bower_components/REM-unit-polyfill/js/rem.js')
-    script(src='scripts/libs/selectivizr/selectivizr.js')
-    // endbuild
-    <![endif]-->
-
-  body
-    include ../../blocks/browsupgrade/browserupgrade
-
-    //- page wrapper, get modifier, by page name
-    +page(page)
-      include ../../blocks/header/header
-      include ../../blocks/hero/hero_main
-
-      main.page__content.content.c-wrap
-          include ../../blocks/benefits/benefits_main
-
-          section.menu-cats.menu-cats_main
-            h3.menu-cats__title.f-title Наше меню
-            .menu-cats__items
-              .menu-cats__item.menu-cat.menu-cat_main
-                a.menu-cat__title.f-title(href="#") Горячие блюда
-                .menu-cat__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
-              .menu-cats__item.menu-cat.menu-cat_main
-                a.menu-cat__title.f-title(href="#") Холодные закуски
-                .menu-cat__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
-              .menu-cats__item.menu-cat.menu-cat_main
-                a.menu-cat__title.f-title(href="#") Десерты
-                .menu-cat__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
-              .menu-cats__item.menu-cat.menu-cat_main
-                a.menu-cat__title.f-title(href="#") Напитки
-                .menu-cat__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
-          //- menu-categories
-
-          section.events.events_last-events-main
-            h3.events__title.f-title Последние события
-            .events__items
-              .events__item.event.event_main
-                a(href="#" title="Событие 1")
-                  +img("events/img_001.jpg",
-                  {title: "Событие 1", className: "event__img", width: "350", height: "234"})
-                a.event__title(href="#" title="Событие 1") Событие 1
-                .event__desc
-                  .event__date 11.11.11
-                  .event__prev-text
-                    | Краткий текст о событии
-              .events__item.event.event_main
-                a(href="#" title="Событие 2")
-                  +img("events/img_002.jpg",
-                  {title: "Событие 2", className: "event__img", width: "350", height: "234"})
-                a.event__title(href="#" title="Событие 2") Событие 2
-                .event__desc
-                  .event__date 11.11.11
-                  .event__prev-text
-                    | Краткий текст о событии
-              .events__item.event.event_main
-                a(href="#" title="Событие 3")
-                  +img("events/img_003.jpg",
-                  {title: "Событие 3", className: "event__img", width: "350", height: "234"})
-                a.event__title(href="#" title="Событие 3") Событие 3
-                .event__desc
-                  .event__date 11.11.11
-                  .event__prev-text
-                    | Краткий текст о событии
-              .events__item.event.event_main
-                a(href="#" title="Событие 4")
-                  +img("events/img_004.jpg",
-                  {title: "Событие 4", className: "event__img", width: "350", height: "234"})
-                a.event__title(href="#" title="Событие 4") Событие 4
-                .event__desc
-                  .event__date 11.11.11
-                  .event__prev-text
-                    | Краткий текст о событии
-          //- events end
+        include ../../blocks/events/events_main
 
 
 
-      include ../../blocks/footer/footer
+    include ../../blocks/footer/footer
 
-    +analytics
+  +analytics
 
-    // build:js scripts/jquery.js
-    // bower:js
-    script(src='/bower_components/jquery/dist/jquery.js')
-    // endbower
-    // endbuild
+  // build:js scripts/jquery.js
+  // bower:js
+  script(src='/bower_components/jquery/dist/jquery.js')
+  // endbower
+  // endbuild
 
-    // build:js scripts/main.js
-    script(src='/bower_components/slick-carousel/slick/slick.js')
-    script(src='/bower_components/jquery-modal/jquery.modal.js')
-    script(src='/bower_components/moment/moment.js')
-    script(src='/bower_components/pikaday/pikaday.js')
-    script(src='scripts/common.js')
-    script(src='scripts/'+page+'.js')
-    // endbuild
+  // build:js scripts/main.js
+  script(src='/bower_components/slick-carousel/slick/slick.js')
+  script(src='/bower_components/jquery-modal/jquery.modal.js')
+  script(src='/bower_components/moment/moment.js')
+  script(src='/bower_components/pikaday/pikaday.js')
+  script(src='/bower_components/jt.timepicker/jquery.timepicker.js')
+  script(src='scripts/common.js')
+  script(src='scripts/'+page+'.js')
+  // endbuild

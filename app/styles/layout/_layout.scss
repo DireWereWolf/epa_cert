@@ -45,11 +45,21 @@
   @include element(wrapper){
 
     @include modifier(l){
-      @include span-columns(9)
+      @include span-columns(9);
+
+      @include mobile{
+        width: 100%;
+        padding: 0 rem(10px);
+      }
     }
     @include modifier(r){
       @include direction-context(right-to-left) {
         @include span-columns(9);
+
+        @include mobile{
+          width: 100%;
+          padding: 0 rem(10px);
+        }
       }
     }
 

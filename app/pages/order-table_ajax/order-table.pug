@@ -107,10 +107,16 @@ form.hall(action="#")
         span.table__spots(title="Кол-во посадочных мест")
           span.table__spots-num
           i.table__spots-ic.fa.fa-user-o
-  div
+  .hall__date
     label
       span Дата бронирования
-      input#datepicker(type="text" value="")
+      i.fa.fa-hand-pointer-o.hall__icon-hand
+      input.hall__input.js-datepicker(type="text" value="")
+  .hall__time
+    label
+      span Время бронирования
+      i.fa.fa-hand-pointer-o.hall__icon-hand
+      input.hall__input.js-timepicker(type="text" value="")
   .hall__settings
     .hall__settings-title Панель управления
     .hall__setting

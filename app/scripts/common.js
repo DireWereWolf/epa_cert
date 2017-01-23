@@ -140,15 +140,15 @@ class App{
 
 /**
  *  Date picker factory method, plugin doc https://github.com/dbushell/Pikaday
- * @param id - input unique id (selector string)
+ * @param selector - input class (selector string)
  * @param params (object)
  * @returns {function}
  * @private {false}
  */
-  datepicker(id, params) {
+  datepicker(selector, params) {
 
     let localeSettings = {
-      field: document.getElementById(id),
+      field: document.querySelector(selector),
       i18n: {//locale 'ru'
         previousMonth: 'Предыдущий месяц',
         nextMonth: 'Следуюший месяц',
@@ -159,8 +159,39 @@ class App{
     },
       copy = Object.assign(localeSettings, params);
 
-    return new Pikaday(copy);
+  return new Pikaday(copy);
   }
+
+  /**
+   * Time picker factory method, plugin doc https://github.com/jonthornton/jquery-timepicker
+   * @param selector
+   * @param params (object)
+   * @returns {jQuery}
+   */
+  timepicker(selector, params){
+
+    let defaultSettings = {
+      am: 'am',
+      pm: 'pm',
+      AM: 'AM',
+      PM: 'PM',
+      decimal: '.',
+      mins: 'минуты',
+      hr: 'час',
+      hrs: 'часы',
+      minTime: '11:00am',
+      maxTime: '10:00pm',
+      timeFormat: 'H:i'
+    },
+      copy = Object.assign(defaultSettings, params);
+
+    return $(selector).timepicker(copy);
+  }
+
+  /*Public methods end*/
+}
+
+class Tables extends App {
 
   /**
    * set table data-attributes by json
@@ -182,11 +213,11 @@ class App{
    * Visualize number and spots of all tables
    * @param selector
    */
-  appendTableInfo(selector = myApp.selectors.table){
+  appendTableInfo(selector = this.selectors.table){
 
     let tables = document.querySelectorAll(selector),
-        elems_num = document.querySelectorAll('.table__num'),
-        elems_spots = document.querySelectorAll('.table__spots-num');
+      elems_num = document.querySelectorAll('.table__num'),
+      elems_spots = document.querySelectorAll('.table__spots-num');
 
     for (let i=0; i < tables.length; i+=1){
       elems_num[i].innerText = tables[i].getAttribute('data-num');
@@ -194,24 +225,11 @@ class App{
     }
   }
 
-  chooseTable(selector = myApp.selectors.table){
-    $(selector).click(function (e) {
-
-      let elem = e.currentTarget,
-          status = elem.getAttribute('data-is-reserved');
-
-      if (status === 'false'){
-        $(elem).toggleClass('table_checked');
-        elem.setAttribute('data-is-checked', 'true');
-      }
-    })
-  }
-
-  checkReserve(selector = myApp.selectors.table){
+  startReserve(selector = this.selectors.table){
 
     let tables = document.querySelectorAll(selector),
-        table_stat,
-        table;
+      table_stat,
+      table;
 
     for (let i=0; i < tables.length; i+=1){
 
@@ -226,13 +244,90 @@ class App{
 
   }
 
-  /*Public methods end*/
+  chooseTable(selector = this.selectors.table){
+
+    $(selector).click(function (e) {
+
+      let elem = e.currentTarget,
+        load_status = $(elem).attr('data-is-reserved'),
+        current_status = $(elem).attr('data-is-checked');
+
+      if (load_status === 'false'){
+
+        console.log("load_status === 'false'");
+        console.log(current_status);
+
+        if (current_status === 'false' || !current_status){
+
+          $(elem).addClass('table_checked');
+          $(elem).attr('data-is-checked', 'true');
+
+        }else if(current_status === 'true'){
+
+          $(elem).removeClass('table_checked');
+          $(elem).attr('data-is-checked', 'false');
+
+        }
+
+      }
+
+    })
+
+  }
+
+  sendReserve(button){
+
+    let combineData = (selector = this.selectors.table) => {
+
+      let table_collection = $(selector),
+          date = $(this.selectors.date).val(),
+          time = $(this.selectors.time).val(),
+          tables = [];
+
+      //filter tables by checked
+      for (let i = 0; i< table_collection.length; i++){
+        if ($(table_collection[i]).attr('data-is-checked') === 'true'){
+          tables.push(table_collection[i]);
+        }
+      }
+
+      //transform collection items to table numbers array
+      let filteredTablesData = tables.map(function (item, i, arr) {
+        return arr[i] = $(item).attr('data-num');
+      });
+
+      return {
+        date: date,
+        time: time,
+        tables: filteredTablesData
+      }
+    };
+
+    $(button).click(function (e) {
+      $.ajax({
+        url: myApp.uris.reserveCreate,
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(combineData())
+      })
+        .done(function (data) {
+          console.log('Резерв успешен', data);
+        })
+        .fail(function (data) {
+          console.log(data);
+          console.error('Данные не были отправлены');
+        })
+    })
+
+  }
+
 }
 
 /**
  * Init App
  * */
-const myApp = new App();
+const myApp = new Tables();
 
 /**
  * App store init
@@ -246,8 +341,17 @@ myApp.store = {
   * Note: typeof selector === string
 * */
 myApp.selectors = {
-  datepicker: '#datepicker',
-  table: '.js-table'
+  table: '.js-table',
+  date: '.js-datepicker',
+  time: '.js-timepicker'
+};
+
+/**
+ * App API url's
+ */
+myApp.uris = {
+  tables_url: 'data/tables.json',
+  reserveCreate: '/' //url for create reserve
 };
 
 /**
@@ -258,8 +362,6 @@ myApp.debug = {
   showViewPort: true
 };
 
-// $(window).resize(myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1'));
-
 myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1');
 
 $(document).ready(function () {
@@ -267,7 +369,7 @@ $(document).ready(function () {
   myApp.viewPort();
   myApp.viewPortAfterResize();
 
-  myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1')
+  myApp.mobileMenu('.main-nav__button', '.main-nav__items_lvl-1');
 
   myApp.modal('.js-modal-open', {
     closeExisting: true,
@@ -283,34 +385,44 @@ $(document).ready(function () {
     fadeDelay: 1.0
   });
 
+  //Before initialize modal event
   $(window).on($.modal.BEFORE_BLOCK, function () {
 
-    $.get('data/tables.json')
-      .done(function(json) {
+    $.ajax({
+      url: myApp.uris.tables_url,
+      method: 'GET',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+    })
+      .done(function (data) {
 
-        //init date picker
-        let picker = myApp.datepicker('datepicker', {
-          format: 'DD/MM/YY',
-          firstDay: 1,
-        });
+      //init date picker
+      let datepicker = myApp.datepicker('.js-datepicker', {
+        format: 'DD/MM/YY',
+        firstDay: 1,
+      });
 
-        //get data from 'server', store init, append data by tables
-        myApp.setTables(json);
+      //init time picker
+      myApp.timepicker('.js-timepicker',{});
 
-        //check reserved by store
-        myApp.checkReserve();
+      //get data from 'server', store init, append data by tables
+      myApp.setTables(data);
 
-        //append to each store data from store, and visualize them
-        myApp.appendTableInfo();
+      //check reserved by store
+      myApp.startReserve();
 
-        //choose some table, add state to table, prepare for send
-        myApp.chooseTable();
+      //append to each store data from store, and visualize them
+      myApp.appendTableInfo();
 
+      //choose some table, add state to table, prepare for send
+      myApp.chooseTable();
 
-      })
+      //register listener for send data event
+      myApp.sendReserve('.js-send-data');
+    })
       .fail(function() {
         console.error('Request wasn\'t send, cannot get json data');
-      })
+      });
 
   });
 

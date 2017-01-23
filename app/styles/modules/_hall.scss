@@ -1,5 +1,22 @@
 @include block(hall){
 
+  &__date, &__time{
+    padding: rem(5px);
+    margin-bottom: rem(5px);
+    background: $oc-gray-1;
+    border: rem(1px) solid $ternary-color;
+    border-radius: rem(3px);
+  }
+
+  @include element(input){
+    background: transparent;
+  }
+
+  @include element(icon-hand){
+    display: inline-block;
+    margin: 0 rem(5px);
+  }
+
   @include element(settings){
     padding: rem(20px) 0;
     text-align: center;
@@ -11,6 +28,10 @@
     margin-bottom: rem(10px);
     @include font-weight($f-bold);
     @include font-size(18px);
+
+    @include mobile{
+      text-align: center;
+    }
   }
 
   @include element(setting-btn){
@@ -25,11 +46,21 @@
     width: 25%;
     @include font-size(16px);
     white-space: nowrap;
+
+    @include mobile{
+      width: 100%;
+      margin-bottom: rem(10px);
+    }
   }
 
   @include element(wrapper){
     max-width: 80%;
     margin: rem(20px) auto;
+
+    @include mobile{
+      max-width: 100%;
+      margin: 0;
+    }
   }
 
   @include element(sec){
@@ -83,6 +114,10 @@
   background: $table-color;
   border-radius: rem(5px);
   cursor: pointer;
+
+  @include mobile{
+    margin: 0 rem(3px);
+  }
 
   /*Orientation*/
   @include modifier(vert){//vertical

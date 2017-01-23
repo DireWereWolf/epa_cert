@@ -2,61 +2,44 @@ include ../../layouts/helpers/mixins
 - var page = 'events';
 
 doctype html
-html.no-js(lang='ru')
-  head
-    meta(charset='utf-8')
-    meta(name='description', content='Информация о нашем ресторане и его история')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title О ресторане
-    link(rel='apple-touch-icon', href='apple-touch-icon.png')
-    // Place favicon.ico in the root directory
++head({
+  title: 'Наши события',
+  description: 'Мероприятия у нас'
+})
+body
+  include ../../blocks/browsupgrade/browserupgrade
 
-    // build:css styles/vendor.css
-    // bower:css
-    // endbower
-    // endbuild
+  //- page wrapper, get modifier, by page name
+  +page(page)
+    include ../../blocks/header/header
 
-    // build:css styles/events.css
-    link(rel='stylesheet', href='styles/'+page+'.css')
-    // endbuild
-
-    // build:js scripts/vendor/modernizr.js
-    script(src='/bower_components/modernizr/modernizr.js')
-    // endbuild
-  body
-    include ../../blocks/browsupgrade/browserupgrade
-
-    //- page wrapper, get modifier, by page name
-    +page(page)
-      include ../../blocks/header/header
-
-      +hero-content("События", "http://placehold.it/350x150", [
-        { url: "index.html",
-          text: "Главная"},
-        { text: "События"}
-      ])
+    +hero-content("События", "http://placehold.it/350x150", [
+      { url: "index.html",
+        text: "Главная"},
+      { text: "События"}
+    ])
 
 
-      main.content
+    main.content
 
 
-      include ../../blocks/footer/footer
+    include ../../blocks/footer/footer
 
 
-    +analytics
+  +analytics
 
-    // build:js scripts/vendor.js
-    // bower:js
-    script(src='/bower_components/jquery/dist/jquery.js')
-    script(src='/bower_components/modernizr/modernizr.js')
-    // endbower
-    // endbuild
+  // build:js scripts/vendor.js
+  // bower:js
+  script(src='/bower_components/jquery/dist/jquery.js')
+  script(src='/bower_components/modernizr/modernizr.js')
+  // endbower
+  // endbuild
 
-    //- build:js scripts/events.js
-    script(src='/bower_components/slick-carousel/slick/slick.js')
-    script(src='/bower_components/jquery-modal/jquery.modal.js')
-    script(src='/bower_components/moment/moment.js')
-    script(src='/bower_components/pikaday/pikaday.js')
-    script(src='scripts/common.js')
-    script(src='scripts/'+page+'.js')
-    //- endbuild
+  //- build:js scripts/events.js
+  script(src='/bower_components/slick-carousel/slick/slick.js')
+  script(src='/bower_components/jquery-modal/jquery.modal.js')
+  script(src='/bower_components/moment/moment.js')
+  script(src='/bower_components/pikaday/pikaday.js')
+  script(src='scripts/common.js')
+  script(src='scripts/'+page+'.js')
+  //- endbuild

@@ -30,11 +30,12 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src('app/**/*.js')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
+    .pipe(rename({dirname: ''}))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
 });
@@ -48,8 +49,8 @@ function lint(files, options) {
 }
 
 gulp.task('lint', () => {
-  return lint('app/scripts/**/*.js')
-    .pipe(gulp.dest('app/scripts'));
+  return lint('app/**/**/*.js')
+    .pipe(gulp.dest('app/**/**/'));
 });
 gulp.task('lint:test', () => {
   return lint('test/spec/**/*.js')
@@ -124,9 +125,8 @@ gulp.task('serve', () => {
     ]).on('change', reload);
 
     gulp.watch('app/**/*.pug', ['views']);
-    // gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/**/**/*.scss', ['styles']);
-    gulp.watch('app/scripts/**/*.js', ['scripts']);
+    gulp.watch('app/**/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('app/data/**/*', ['data']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
