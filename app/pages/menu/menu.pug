@@ -2,45 +2,51 @@ include ../../layouts/helpers/mixins
 - var page = 'menu';
 
 doctype html
-+head({
-  title: 'Наше меню',
-  description: 'Лучшие блюда для вас!'
-})
-body
-  include ../../blocks/browsupgrade/browserupgrade
+<![if IE 8 ]>
+html(lang="ru" class="ie ie8" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
+<![endif]>
+<![if (gte IE 9)|!(IE)]>
+html(lang="ru" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
+<![endif]>
+  +head({
+    title: 'Наше меню',
+    description: 'Лучшие блюда для вас!'
+  })
+  body
+    include ../../blocks/browsupgrade/browserupgrade
 
-  //- page wrapper, get modifier, by page name
-  +page(page)
-    include ../../blocks/header/header
+    //- page wrapper, get modifier, by page name
+    +page(page)
+      include ../../blocks/header/header
 
-    +hero-content("Наше меню", "images/hero_menu.jpg", [
-      { url: "index.html",
-        text: "Главная"},
-      { url: "#",
-        text: "Наше меню"}
-    ])
-    .page__content.c-wrap.content
-      +sidebar('left')
-        include ../../blocks/menu-categories/menu-categories_sidebar
+      +hero-content("Наше меню", "images/hero_menu.jpg", [
+        { url: "index.html",
+          text: "Главная"},
+        { url: "#",
+          text: "Наше меню"}
+      ])
+      .page__content.c-wrap.content
+        +sidebar('left')
+          include ../../blocks/menu-categories/menu-categories_sidebar
 
-      main.content__wrapper.content__wrapper_r
-        h2 Content
-    include ../../blocks/footer/footer
+        main.content__wrapper.content__wrapper_r
+          h2 Content
+      include ../../blocks/footer/footer
 
-  +analytics
+    +analytics
 
-  // build:js scripts/vendor.js
-  // bower:js
-  script(src='/bower_components/jquery/dist/jquery.js')
-  script(src='/bower_components/modernizr/modernizr.js')
-  // endbower
-  // endbuild
+    // build:js scripts/vendor.js
+    // bower:js
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/modernizr/modernizr.js')
+    // endbower
+    // endbuild
 
-  //- build:js scripts/menu.js
-  script(src='/bower_components/slick-carousel/slick/slick.js')
-  script(src='/bower_components/jquery-modal/jquery.modal.js')
-  script(src='/bower_components/moment/moment.js')
-  script(src='/bower_components/pikaday/pikaday.js')
-  script(src='scripts/common.js')
-  script(src='scripts/'+page+'.js')
-  //- endbuild
+    //- build:js scripts/menu.js
+    script(src='/bower_components/slick-carousel/slick/slick.js')
+    script(src='/bower_components/jquery-modal/jquery.modal.js')
+    script(src='/bower_components/moment/moment.js')
+    script(src='/bower_components/pikaday/pikaday.js')
+    script(src='scripts/common.js')
+    script(src='scripts/'+page+'.js')
+    //- endbuild

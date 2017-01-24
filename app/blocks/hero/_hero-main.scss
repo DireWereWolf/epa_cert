@@ -16,6 +16,19 @@
         color: $white;
         text-shadow: 1px 0 5px rgba(0, 0, 0, 0.8);
         z-index: 20;
+
+        @include mobile{
+          width: 70%;
+          margin: 0 0 0 -35%;
+          @include font-size(30px);
+        }
+      }
+      @include element(slider){
+        background: $secondary-color;
+
+        @include mobile{
+          background: none;
+        }
       }
     }
   }

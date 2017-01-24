@@ -219,10 +219,12 @@
 
     .slider{
       &__slide{
-        max-height: rem(600px);
+        max-height: rem(500px);
         overflow: hidden;
       }
-      &__img{}
+      &__img{
+        margin: auto;
+      }
     }
     .slick{
       /* Slider */

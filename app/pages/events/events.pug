@@ -2,44 +2,50 @@ include ../../layouts/helpers/mixins
 - var page = 'events';
 
 doctype html
-+head({
-  title: 'Наши события',
-  description: 'Мероприятия у нас'
-})
-body
-  include ../../blocks/browsupgrade/browserupgrade
+<![if IE 8 ]>
+html(lang="ru" class="ie ie8" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
+<![endif]>
+<![if (gte IE 9)|!(IE)]>
+html(lang="ru" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
+<![endif]>
+  +head({
+    title: 'Наши события',
+    description: 'Мероприятия у нас'
+  })
+  body
+    include ../../blocks/browsupgrade/browserupgrade
 
-  //- page wrapper, get modifier, by page name
-  +page(page)
-    include ../../blocks/header/header
+    //- page wrapper, get modifier, by page name
+    +page(page)
+      include ../../blocks/header/header
 
-    +hero-content("События", "http://placehold.it/350x150", [
-      { url: "index.html",
-        text: "Главная"},
-      { text: "События"}
-    ])
-
-
-    main.content
+      +hero-content("События", "http://placehold.it/350x150", [
+        { url: "index.html",
+          text: "Главная"},
+        { text: "События"}
+      ])
 
 
-    include ../../blocks/footer/footer
+      main.content
 
 
-  +analytics
+      include ../../blocks/footer/footer
 
-  // build:js scripts/vendor.js
-  // bower:js
-  script(src='/bower_components/jquery/dist/jquery.js')
-  script(src='/bower_components/modernizr/modernizr.js')
-  // endbower
-  // endbuild
 
-  //- build:js scripts/events.js
-  script(src='/bower_components/slick-carousel/slick/slick.js')
-  script(src='/bower_components/jquery-modal/jquery.modal.js')
-  script(src='/bower_components/moment/moment.js')
-  script(src='/bower_components/pikaday/pikaday.js')
-  script(src='scripts/common.js')
-  script(src='scripts/'+page+'.js')
-  //- endbuild
+    +analytics
+
+    // build:js scripts/vendor.js
+    // bower:js
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/modernizr/modernizr.js')
+    // endbower
+    // endbuild
+
+    //- build:js scripts/events.js
+    script(src='/bower_components/slick-carousel/slick/slick.js')
+    script(src='/bower_components/jquery-modal/jquery.modal.js')
+    script(src='/bower_components/moment/moment.js')
+    script(src='/bower_components/pikaday/pikaday.js')
+    script(src='scripts/common.js')
+    script(src='scripts/'+page+'.js')
+    //- endbuild

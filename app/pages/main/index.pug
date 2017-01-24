@@ -2,57 +2,63 @@ include ../../layouts/helpers/mixins
 - var page = 'main';
 
 doctype html
-+head({
-  title: 'Главная',
-  description: 'Лучший ресторан Киева'
-})
-body
-  include ../../blocks/browsupgrade/browserupgrade
+<![if IE 8 ]>
+html(lang="ru" class="ie ie8" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
+<![endif]>
+<![if (gte IE 9)|!(IE)]>
+html(lang="ru" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
+<![endif]>
+  +head({
+    title: 'Главная',
+    description: 'Лучший ресторан Киева'
+  })
+  body
+    include ../../blocks/browsupgrade/browserupgrade
 
-  //- page wrapper, get modifier, by page name
-  +page(page)
-    include ../../blocks/header/header
-    include ../../blocks/hero/hero_main
+    //- page wrapper, get modifier, by page name
+    +page(page)
+      include ../../blocks/header/header
+      include ../../blocks/hero/hero_main
 
-    main.page__content.content.c-wrap
-        include ../../blocks/benefits/benefits_main
-        section.menu-cats.menu-cats_main
-          h3.menu-cats__title.f-title Наше меню
-          .menu-cats__items
-            .menu-cats__item.menu-cat.menu-cat_main
-              a.menu-cat__title.f-title(href="#") Горячие блюда
-              .menu-cat__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
-            .menu-cats__item.menu-cat.menu-cat_main
-              a.menu-cat__title.f-title(href="#") Холодные закуски
-              .menu-cat__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
-            .menu-cats__item.menu-cat.menu-cat_main
-              a.menu-cat__title.f-title(href="#") Десерты
-              .menu-cat__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
-            .menu-cats__item.menu-cat.menu-cat_main
-              a.menu-cat__title.f-title(href="#") Напитки
-              .menu-cat__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
-        //- menu-categories
+      main.page__content.content.c-wrap
+          include ../../blocks/benefits/benefits_main
+          section.menu-cats.menu-cats_main
+            h3.menu-cats__title.f-title Наше меню
+            .menu-cats__items
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Горячие блюда
+                .menu-cat__img(style="background: url('images/menu/cat_1.jpg') 50% 50% no-repeat")
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Холодные закуски
+                .menu-cat__img(style="background: url('images/menu/cat_2.jpg') 50% 50% no-repeat")
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Десерты
+                .menu-cat__img(style="background: url('images/menu/cat_3.jpg') 50% 50% no-repeat")
+              .menu-cats__item.menu-cat.menu-cat_main
+                a.menu-cat__title.f-title(href="#") Напитки
+                .menu-cat__img(style="background: url('images/menu/cat_4.jpg') 50% 50% no-repeat")
+          //- menu-categories
 
-        include ../../blocks/events/events_main
+          include ../../blocks/events/events_main
 
 
 
-    include ../../blocks/footer/footer
+      include ../../blocks/footer/footer
 
-  +analytics
+    +analytics
 
-  // build:js scripts/jquery.js
-  // bower:js
-  script(src='/bower_components/jquery/dist/jquery.js')
-  // endbower
-  // endbuild
+    // build:js scripts/jquery.js
+    // bower:js
+    script(src='/bower_components/jquery/dist/jquery.js')
+    // endbower
+    // endbuild
 
-  // build:js scripts/main.js
-  script(src='/bower_components/slick-carousel/slick/slick.js')
-  script(src='/bower_components/jquery-modal/jquery.modal.js')
-  script(src='/bower_components/moment/moment.js')
-  script(src='/bower_components/pikaday/pikaday.js')
-  script(src='/bower_components/jt.timepicker/jquery.timepicker.js')
-  script(src='scripts/common.js')
-  script(src='scripts/'+page+'.js')
-  // endbuild
+    // build:js scripts/main.js
+    script(src='/bower_components/slick-carousel/slick/slick.js')
+    script(src='/bower_components/jquery-modal/jquery.modal.js')
+    script(src='/bower_components/moment/moment.js')
+    script(src='/bower_components/pikaday/pikaday.js')
+    script(src='/bower_components/jt.timepicker/jquery.timepicker.js')
+    script(src='scripts/common.js')
+    script(src='scripts/'+page+'.js')
+    // endbuild

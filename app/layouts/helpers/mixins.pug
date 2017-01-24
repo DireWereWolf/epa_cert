@@ -7,58 +7,52 @@ mixin page(modifier)
 
 
 mixin head(head_data)
-  <!--[if IE 8 ]>
-    html(lang="ru" class="ie ie8" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
-  <![endif]-->
-  <!--[if (gte IE 9)|!(IE)]><!-->
-    html(lang="ru" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#")
-  <!--<![endif]-->
-  -
-    var data_head = {
-      title: 'Заголовок',
-      description: 'Описание страницы',
-      keywords: 'Ключевые слова'
-    };
-    if (!head_data) {head_data = data_head}
+    -
+      var data_head = {
+        title: 'Заголовок',
+        description: 'Описание страницы',
+        keywords: 'Ключевые слова'
+      };
+      if (!head_data) {head_data = data_head}
 
-  head
-    meta(charset='utf-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1')
-    //SEO
-    title=head_data.title
-    meta(name='description' content=head_data.description)
-    meta(name='keywords' content=head_data.keywords)
-    meta(property="og:url"          content="http://www.siteurl.com/" +page+".html")
-    meta(property="og:type"         content=page)
-    meta(property="og:title"        content=head_data.title)
-    meta(property="og:description"  content=head_data.description)
-    meta(property="og:image"        content=head_data.image)
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        //SEO
+        title=head_data.title
+        meta(name='description' content=head_data.description)
+        meta(name='keywords' content=head_data.keywords)
+        meta(property="og:url"          content="http://www.siteurl.com/" +page+".html")
+        meta(property="og:type"         content=page)
+        meta(property="og:title"        content=head_data.title)
+        meta(property="og:description"  content=head_data.description)
+        meta(property="og:image"        content=head_data.image)
 
-    link(rel='apple-touch-icon', href='apple-touch-icon.png')
-    // Place favicon.ico in the root directory
+        link(rel='apple-touch-icon', href='apple-touch-icon.png')
+        // Place favicon.ico in the root directory
 
-    // build:css styles/vendor.css
-    // bower:css
-    // endbower
-    // endbuild
+        // build:css styles/vendor.css
+        // bower:css
+        // endbower
+        // endbuild
 
-    link(href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Ubuntu:400,500,500i&amp;subset=cyrillic"
-    rel="stylesheet")
-    // build:css styles/main.css
-    link(rel='stylesheet', href='styles/' + page + '.css')
-    // endbuild
+        link(href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Ubuntu:400,500,500i&amp;subset=cyrillic"
+        rel="stylesheet")
+        // build:css styles/main.css
+        link(rel='stylesheet', href='styles/' + page + '.css')
+        // endbuild
 
-    // build:js scripts/vendor/modernizr.js
-    script(src='/bower_components/modernizr/modernizr.js')
-    // endbuild
+        // build:js scripts/vendor/modernizr.js
+        script(src='/bower_components/modernizr/modernizr.js')
+        // endbuild
 
 
-    <!--[if lt IE 9]>
-    // build:js scripts/vendor/polyfills.js
-    script(src='/bower_components/REM-unit-polyfill/js/rem.js')
-    script(src='scripts/libs/selectivizr/selectivizr.js')
-    // endbuild
-    <![endif]-->
+        <![if lt IE 10]>
+        // build:js scripts/vendor/polyfills.js
+        script(src='/bower_components/REM-unit-polyfill/js/rem.js')
+        script(src='scripts/libs/selectivizr/selectivizr.js')
+        // endbuild
+        <![endif]>
 
 
 //-***************************

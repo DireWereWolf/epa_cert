@@ -1,6 +1,6 @@
 /* Main page js */
 
-$(document).ready(function () {
+$(window).on('load', function () {
   myApp.slider('.js-hero-slider', {
 
     accessibility: true,

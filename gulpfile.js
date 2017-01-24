@@ -40,22 +40,22 @@ gulp.task('scripts', () => {
     .pipe(reload({stream: true}));
 });
 
-function lint(files, options) {
-  return gulp.src(files)
-    .pipe($.eslint({ fix: true }))
-    .pipe(reload({stream: true, once: true}))
-    .pipe($.eslint.format())
-    .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-}
+// function lint(files, options) {
+//   return gulp.src(files)
+//     .pipe($.eslint({ fix: true }))
+//     .pipe(reload({stream: true, once: true}))
+//     .pipe($.eslint.format())
+//     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+// }
 
-gulp.task('lint', () => {
-  return lint('app/**/**/*.js')
-    .pipe(gulp.dest('app/**/**/'));
-});
-gulp.task('lint:test', () => {
-  return lint('test/spec/**/*.js')
-    .pipe(gulp.dest('test/spec'));
-});
+// gulp.task('lint', () => {
+//   return lint('app/**/**/*.js')
+//     .pipe(gulp.dest('app/**/**/'));
+// });
+// gulp.task('lint:test', () => {
+//   return lint('test/spec/**/*.js')
+//     .pipe(gulp.dest('test/spec'));
+// });
 
 gulp.task('views', () => {
   return gulp.src('app/pages/**/*.pug')
@@ -67,7 +67,7 @@ gulp.task('views', () => {
 });
 
 gulp.task('html', ['views', 'styles', 'scripts'], () => {
-  return gulp.src(['app/*.html', '.tmp/**/*.html'])
+  return gulp.src(['app/*.html', '.tmp/**/*.*'])
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
@@ -103,6 +103,8 @@ gulp.task('extras', () => {
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+
+gulp.task('cleanDirs', del.bind(null, ['dist/blocks', 'dist/pages', 'dist/layouts']));
 
 gulp.task('serve', () => {
   runSequence(['clean', 'wiredep'], ['views', 'styles', 'scripts', 'fonts', 'data'], () => {
@@ -160,7 +162,7 @@ gulp.task('serve:test', ['scripts'], () => {
   gulp.watch('app/**/*.pug', ['views']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
+  // gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
 // inject bower components
@@ -179,13 +181,13 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app/layouts'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'data', 'extras'], () => {
+gulp.task('build', [/*'lint',*/'html', 'images', 'fonts', 'data', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep'], 'build', resolve);
+    runSequence(['clean', 'wiredep'], 'build', 'cleanDirs', resolve);
   });
 });
